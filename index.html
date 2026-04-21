@@ -1,154 +1,420 @@
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light only">
 <title>كم باقي؟ | العد التنازلي للمناسبات</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700;900&family=Readex+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+<meta name="description" content="كم باقي على رمضان؟ كم باقي على العيد؟ كم باقي على الراتب؟ اعرف الآن بالعد التنازلي المباشر">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
-
-/* ===== FIXED ROOT ===== */
-:root, [data-theme="obsidian"] {
---bg-primary:#08080f;
---bg-card:#101018;
---bg-card-hover:#18182a;
---gold:#c9a84c;
---gold-light:#e8cc6e;
---gold-dim:#8a6e28;
---text-primary:#eae6de;
---text-secondary:#8a8898;
---accent-green:#3edba5;
---accent-rose:#ff6b9d;
---accent-blue:#7c6ef0;
---accent-orange:#f0a030;
---radius:22px;
---font-main:'Noto Sans Arabic','Readex Pro',sans-serif;
+:root {
+  --bg:#f3f3f3;--bg2:#e5e5e5;--card:#ffffff;--card-hover:#fafafa;
+  --ink:#111;--ink2:#444;--ink3:#777;
+  --accent:#5046e5;--accent-bg:rgba(80,70,229,0.06);--accent-border:rgba(80,70,229,0.12);
+  --green:#137a52;--green-bg:rgba(19,122,82,0.06);
+  --rose:#c41850;--rose-bg:rgba(196,24,80,0.05);
+  --blue:#1d4ed8;--blue-bg:rgba(29,78,216,0.05);
+  --orange:#c2600a;--orange-bg:rgba(194,96,10,0.05);
+  --r:16px;
 }
-
-/* ===== BODY ===== */
-body{
-margin:0;
-font-family:var(--font-main);
-background:var(--bg-primary);
-color:var(--text-primary);
+[data-th="dark"]{
+  --bg:#111118;--bg2:#222230;--card:#1a1a24;--card-hover:#22222e;
+  --ink:#eee;--ink2:#aaa;--ink3:#777;
+  --accent:#818cf8;--accent-bg:rgba(129,140,248,0.1);--accent-border:rgba(129,140,248,0.2);
+  --green:#34d399;--green-bg:rgba(52,211,153,0.1);
+  --rose:#fb7185;--rose-bg:rgba(251,113,133,0.1);
+  --blue:#93c5fd;--blue-bg:rgba(147,197,253,0.1);
+  --orange:#fbbf24;--orange-bg:rgba(251,191,36,0.1);
 }
+*{margin:0;padding:0;box-sizing:border-box}
+html{color-scheme:light only;background:var(--bg2)}
+body{font-family:'Tajawal',sans-serif;min-height:100vh;line-height:1.8;-webkit-font-smoothing:antialiased;background:var(--bg);color:var(--ink);transition:background 0.3s,color 0.3s;max-width:480px;margin:0 auto;position:relative;box-shadow:0 0 40px rgba(0,0,0,0.08)}
 
-/* ===== HEADER ===== */
-.header{
-text-align:center;
-padding:40px 20px;
-}
+/* ══════ MODE TOGGLE ══════ */
+.mode-bar{position:absolute;top:12px;left:12px;z-index:60;display:flex;gap:3px;background:var(–card);border:1px solid var(–bg2);border-radius:20px;padding:3px;box-shadow:0 2px 10px rgba(0,0,0,0.06)}
+.mode-b{width:30px;height:30px;border-radius:50%;border:none;cursor:pointer;font-size:0.85rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;background:transparent;color:var(–ink3)}
+.mode-b.on{background:var(–accent);color:#fff;box-shadow:0 2px 8px rgba(80,70,229,0.25)}
 
-.header h1{
-font-size:32px;
-background:linear-gradient(135deg,var(--gold-light),var(--gold));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
+/* ══════ HEADER ══════ */
+.hdr{text-align:center;padding:52px 14px 28px;background:var(–card);border-bottom:1px solid var(–bg2)}
+.hdr h1{font-size:clamp(2rem,6vw,3rem);font-weight:900;color:var(–accent);letter-spacing:-0.5px;margin-bottom:4px}
+.hdr p{color:var(–ink3);font-weight:500;font-size:0.9rem}
+.hdr::after{content:’’;display:block;margin:20px auto 0;width:36px;height:2px;background:var(–accent);border-radius:2px;opacity:0.3}
 
-/* ===== GRID ===== */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
-padding:20px;
-max-width:1200px;
-margin:auto;
-}
+/* ══════ SPONSORS ══════ */
+.spn{padding:8px 14px;background:var(–card);border-bottom:1px solid var(–bg2)}
+.spn-in{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
+.spn-a{text-decoration:none;color:var(–ink2);padding:5px 10px;border-radius:8px;font-size:0.72rem;font-weight:700;transition:all 0.2s;display:flex;align-items:center;gap:5px;line-height:1.6}
+.spn-a:hover{background:var(–accent-bg);color:var(–accent)}
 
-/* ===== CARD ===== */
-.card{
-background:var(--bg-card);
-padding:20px;
-border-radius:var(--radius);
-transition:0.3s;
-}
+/* ══════ FILTERS ══════ */
+.flt{display:flex;justify-content:center;gap:5px;padding:12px 10px 20px;flex-wrap:wrap}
+.fb{background:var(–card);border:1.5px solid var(–bg2);color:var(–ink2);padding:6px 14px;border-radius:50px;font-family:‘Tajawal’;font-size:0.78rem;font-weight:700;cursor:pointer;transition:all 0.25s;line-height:1.6}
+.fb:hover{border-color:var(–accent);color:var(–accent)}
+.fb.on{background:var(–accent);color:#fff;border-color:var(–accent);box-shadow:0 4px 14px rgba(80,70,229,0.2)}
 
-.card:hover{
-background:var(--bg-card-hover);
-transform:translateY(-5px);
-}
+/* ══════ ADD EVENT ══════ */
+.ae-bar{padding:0 14px 16px}
+.ae-btn{width:100%;padding:12px;border:2px dashed var(–bg2);border-radius:var(–r);background:transparent;color:var(–ink3);font-family:‘Tajawal’;font-size:0.85rem;font-weight:700;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.ae-btn:hover{border-color:var(–accent);color:var(–accent);background:var(–accent-bg)}
+.ae-f{display:none;background:var(–card);border:1px solid var(–bg2);border-radius:var(–r);padding:18px;gap:10px;flex-direction:column;box-shadow:0 4px 20px rgba(0,0,0,0.04)}
+.ae-f.show{display:flex}
+.ae-f input{padding:10px 14px;border-radius:12px;border:1.5px solid var(–bg2);background:var(–bg);color:var(–ink);font-family:‘Tajawal’;font-size:0.88rem;outline:none;transition:border 0.2s}
+.ae-f input:focus{border-color:var(–accent)}
+.ae-row{display:flex;gap:10px}
+.ae-row input{flex:1}
+.ae-sub{padding:10px 24px;border:none;border-radius:12px;background:var(–accent);color:#fff;font-family:‘Tajawal’;font-size:0.88rem;font-weight:700;cursor:pointer;transition:all 0.2s}
+.ae-sub:hover{box-shadow:0 4px 16px rgba(80,70,229,0.25);transform:translateY(-1px)}
 
-.card-title{
-font-size:18px;
-margin-bottom:10px;
-}
+/* ══════ GRID ══════ */
+.grd{display:grid;grid-template-columns:1fr;gap:14px;padding:0 14px 24px}
 
-.countdown{
-font-size:20px;
-color:var(--gold);
-}
+/* ══════ CARDS ══════ */
+.cd{background:var(–card);border:1px solid rgba(0,0,0,0.06);border-radius:var(–r);padding:24px 24px 20px;position:relative;overflow:hidden;transition:all 0.35s;cursor:default;animation:cIn 0.5s ease backwards;box-shadow:0 1px 3px rgba(0,0,0,0.03),0 4px 12px rgba(0,0,0,0.02)}
+.cd:nth-child(1){animation-delay:.04s}.cd:nth-child(2){animation-delay:.08s}.cd:nth-child(3){animation-delay:.12s}.cd:nth-child(4){animation-delay:.16s}.cd:nth-child(5){animation-delay:.2s}.cd:nth-child(6){animation-delay:.24s}
+@keyframes cIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.cd:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,0.06);border-color:rgba(0,0,0,0.08)}
+.cd::before{content:’’;position:absolute;top:0;right:0;width:100%;height:3px;background:var(–ca,var(–accent));opacity:0.5}
 
-/* ===== BUTTON ===== */
-button{
-padding:10px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-background:var(--gold);
-color:#000;
-}
+/* Card header: icon + category inline */
+.cd-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.cd-ic{font-size:1.6rem;line-height:1}
+.cd-cat{font-size:0.65rem;font-weight:800;letter-spacing:0.8px;color:var(–ca,var(–accent));background:rgba(124,94,20,0.05);padding:2px 10px;border-radius:20px;line-height:1.8}
 
-/* ===== FIX content ===== */
-body::before{content:'';}
+/* Title + date */
+.cd-tt{font-size:1.2rem;font-weight:800;margin-bottom:2px;line-height:1.7;color:var(–ink)}
+.cd-dt{font-weight:500;font-size:0.78rem;color:var(–ink3);margin-bottom:16px;line-height:1.7}
 
+/* Countdown */
+.ct{display:flex;align-items:center;justify-content:center;gap:6px;direction:ltr;margin-bottom:14px}
+.cu{text-align:center;min-width:50px;background:var(–bg);border:1px solid var(–bg2);border-radius:10px;padding:8px 4px;transition:all 0.3s}
+.cd:hover .cu{border-color:var(–ca,rgba(124,94,20,0.12));background:rgba(124,94,20,0.03)}
+.cn{font-size:1.5rem;font-weight:900;line-height:1;font-variant-numeric:tabular-nums;color:var(–ink);transition:color 0.3s}
+.cd:hover .cn{color:var(–ca,var(–accent))}
+.cl{font-size:0.6rem;color:var(–ink3);font-weight:700;margin-top:4px;line-height:1.5}
+.cs{color:var(–ink3);font-size:1rem;font-weight:300;opacity:0.3;align-self:flex-start;margin-top:8px;animation:bk 2s ease infinite}
+@keyframes bk{0%,100%{opacity:.3}50%{opacity:.1}}
+
+/* Actions - compact single row */
+.cd-ac{display:flex;flex-wrap:wrap;gap:5px;padding-top:12px;border-top:1px solid var(–bg2);justify-content:center}
+.ab{display:inline-flex;align-items:center;gap:3px;background:var(–bg);border:1px solid var(–bg2);color:var(–ink3);padding:4px 10px;border-radius:6px;font-family:‘Tajawal’;font-size:0.65rem;font-weight:700;cursor:pointer;transition:all 0.2s;text-decoration:none}
+.ab:hover{border-color:var(–accent);color:var(–accent);background:var(–accent-bg)}
+.ab.wa:hover{color:var(–green);border-color:var(–green);background:var(–green-bg)}
+.ab.tg:hover{color:var(–blue);border-color:var(–blue);background:var(–blue-bg)}
+.ab.tw:hover{color:var(–ink);border-color:var(–ink)}
+
+/* Badges */
+.b-live{position:absolute;top:14px;left:14px;background:var(–green-bg);color:var(–green);font-size:0.68rem;font-weight:800;padding:3px 10px;border-radius:50px;display:flex;align-items:center;gap:5px;line-height:1.6}
+.b-live::before{content:’’;width:6px;height:6px;background:var(–green);border-radius:50%;animation:pp 1.5s infinite}
+@keyframes pp{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+.cd.nr{border-color:var(–accent-border);box-shadow:0 2px 16px rgba(124,94,20,0.06)}
+.b-nr{position:absolute;top:14px;left:14px;background:var(–accent);color:#fff;font-size:0.68rem;font-weight:800;padding:4px 12px;border-radius:50px;line-height:1.6;box-shadow:0 3px 10px rgba(124,94,20,0.2)}
+.b-cu{position:absolute;top:14px;left:50px;background:var(–blue-bg);color:var(–blue);font-size:0.64rem;font-weight:800;padding:3px 8px;border-radius:50px}
+.del-cu{position:absolute;top:14px;left:14px;background:var(–rose-bg);border:none;color:var(–rose);width:24px;height:24px;border-radius:50%;font-size:0.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s}
+.cd:hover .del-cu{opacity:0.7}
+.del-cu:hover{opacity:1!important}
+
+/* ══════ AD BANNER ══════ */
+.adb{padding:0 14px 20px;position:relative}
+.adi{background:var(–card);border:1px solid rgba(0,0,0,0.06);border-radius:var(–r);padding:20px 24px;display:flex;align-items:center;gap:18px;transition:all 0.3s;text-decoration:none;color:var(–ink);position:relative;overflow:hidden}
+.adi::before{content:’’;position:absolute;inset:0;background:linear-gradient(135deg,var(–accent-bg),transparent 60%);pointer-events:none}
+.adi:hover{border-color:var(–accent-border);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.05)}
+.adi-ic{font-size:1.6rem;flex-shrink:0}
+.adi-c{flex:1}.adi-c h3{font-size:0.9rem;font-weight:800;margin-bottom:1px}
+.adi-c p{font-size:0.75rem;color:var(–ink2);font-weight:400}
+.adi-cta{background:var(–accent);color:#fff;padding:7px 16px;border-radius:50px;font-family:‘Tajawal’;font-size:0.75rem;font-weight:700;white-space:nowrap;flex-shrink:0;cursor:pointer}
+.adi-tag{position:absolute;top:8px;left:24px;font-size:0.58rem;color:var(–ink3);opacity:0.4;letter-spacing:1px;font-weight:700}
+
+/* ══════ DEALS ══════ */
+.dls{padding:0 14px 24px}
+.dls-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.dls-t{font-size:1rem;font-weight:800;display:flex;align-items:center;gap:6px}
+.dls-tg{font-size:0.58rem;color:var(–ink3);opacity:0.4;letter-spacing:1px;font-weight:700}
+.dls-sc{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.dls-sc::-webkit-scrollbar{display:none}
+.dlc{min-width:190px;max-width:190px;background:var(–card);border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:16px;flex-shrink:0;transition:all 0.3s;text-decoration:none;color:var(–ink);display:flex;flex-direction:column}
+.dlc:hover{border-color:var(–accent-border);transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.05)}
+.dlc-em{font-size:1.5rem;margin-bottom:6px}
+.dlc-st{font-size:0.6rem;color:var(–green);font-weight:800;letter-spacing:0.8px;margin-bottom:2px}
+.dlc-nm{font-size:0.82rem;font-weight:800;margin-bottom:3px;line-height:1.4}
+.dlc-ds{font-size:0.7rem;color:var(–ink3);font-weight:400;margin-bottom:8px;line-height:1.5;flex:1}
+.dlc-bd{display:inline-block;background:var(–rose-bg);color:var(–rose);font-size:0.64rem;font-weight:800;padding:2px 7px;border-radius:5px;align-self:flex-start}
+
+/* ══════ PREMIUM ══════ */
+.prm{padding:0 14px 24px}
+.prm-h{margin-bottom:14px}.prm-t{font-size:1rem;font-weight:800;display:flex;align-items:center;gap:6px}
+.prm-sc{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none}
+.prm-sc::-webkit-scrollbar{display:none}
+.prc{min-width:160px;max-width:160px;background:var(–card);border:1px solid rgba(0,0,0,0.06);border-radius:14px;overflow:hidden;flex-shrink:0;transition:all 0.3s;cursor:pointer;text-decoration:none;color:var(–ink)}
+.prc:hover{border-color:var(–accent-border);transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.05)}
+.prc-pv{height:85px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;position:relative}
+.prc-pv::after{content:’’;position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,var(–card))}
+.prc-in{padding:10px 12px}
+.prc-nm{font-size:0.76rem;font-weight:800;margin-bottom:3px}
+.prc-pr{display:flex;align-items:center;justify-content:space-between}
+.prc-am{font-size:0.72rem;color:var(–accent);font-weight:800}
+.prc-fr{font-size:0.64rem;color:var(–green);font-weight:800}
+.prc-by{font-size:0.62rem;background:var(–accent-bg);color:var(–accent);padding:2px 8px;border-radius:5px;font-weight:800}
+
+/* ══════ WHATSAPP CTA ══════ */
+.wa-sec{padding:0 14px 20px}
+.wa-in{background:var(–green-bg);border:1px solid var(–green-bg);border-radius:var(–r);padding:28px 28px;display:flex;align-items:center;gap:22px}
+.wa-ic{font-size:2rem;flex-shrink:0}
+.wa-tx{flex:1}
+.wa-tx h3{font-size:0.95rem;font-weight:800;margin-bottom:3px}
+.wa-tx p{font-size:0.78rem;color:var(–ink2);font-weight:400;margin-bottom:12px;line-height:1.6}
+.wa-bt{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#128C7E,#25D366);color:#fff;padding:10px 24px;border-radius:12px;font-family:‘Tajawal’;font-size:0.88rem;font-weight:800;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 14px rgba(37,211,102,0.18)}
+.wa-bt:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,211,102,0.25)}
+.wa-nt{font-size:0.62rem;color:var(–ink3);margin-top:6px;font-weight:500}
+
+/* ══════ APP BANNER ══════ */
+.app{padding:0 14px 24px}
+.app-in{background:var(–blue-bg);border:1px solid var(–blue-bg);border-radius:var(–r);padding:22px 26px;display:flex;align-items:center;gap:18px}
+.app-mk{font-size:2.2rem;flex-shrink:0;background:rgba(37,72,194,0.08);width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center}
+.app-tx{flex:1}.app-tx h3{font-size:0.95rem;font-weight:800;margin-bottom:2px}
+.app-tx p{font-size:0.76rem;color:var(–ink2);font-weight:400}
+.app-bs{display:flex;gap:6px;flex-shrink:0}
+.app-sb{padding:7px 14px;border-radius:10px;background:var(–card);border:1px solid var(–bg2);color:var(–ink);font-family:‘Tajawal’;font-size:0.7rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:5px;transition:all 0.2s}
+.app-sb:hover{border-color:var(–blue);color:var(–blue)}
+
+/* ══════ FOOTER ══════ */
+.fsp{padding:28px 14px}
+.fsp-t{text-align:center;font-size:0.68rem;color:var(–ink3);opacity:0.5;letter-spacing:2px;font-weight:700;margin-bottom:16px}
+.fsp-g{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
+.fsp-a{display:flex;align-items:center;gap:6px;background:var(–card);border:1px solid var(–bg2);padding:8px 14px;border-radius:10px;text-decoration:none;color:var(–ink2);font-size:0.78rem;font-weight:700;transition:all 0.2s}
+.fsp-a:hover{border-color:var(–accent-border);color:var(–accent);transform:translateY(-1px)}
+.ftr{text-align:center;padding:24px 14px 18px;color:var(–ink3);font-size:0.76rem;font-weight:400;border-top:1px solid var(–bg2);background:var(–card)}
+
+/* ══════ MODAL ══════ */
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);z-index:100;align-items:center;justify-content:center;padding:20px}
+.mo.on{display:flex}
+.ml{background:var(–card);border:1px solid var(–bg2);border-radius:var(–r);max-width:520px;width:100%;max-height:80vh;overflow-y:auto;padding:30px;position:relative;animation:mIn 0.3s ease;box-shadow:0 20px 60px rgba(0,0,0,0.12)}
+@keyframes mIn{from{opacity:0;transform:scale(.96) translateY(16px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.ml-x{position:absolute;top:12px;left:12px;background:var(–bg);border:1px solid var(–bg2);color:var(–ink3);width:30px;height:30px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.ml-x:hover{background:var(–rose-bg);color:var(–rose);border-color:var(–rose)}
+.ml-ic{font-size:2.2rem;margin-bottom:12px}
+.ml-tt{font-size:1.2rem;font-weight:800;margin-bottom:4px}
+.ml-ds{color:var(–ink2);font-weight:400;font-size:0.85rem;margin-bottom:18px;line-height:1.7}
+.ml-ct{background:var(–bg);border:1px solid var(–bg2);border-radius:14px;padding:18px;margin-bottom:16px;font-size:0.9rem;line-height:2;white-space:pre-line;text-align:right;color:var(–ink)}
+.ml-ac{display:flex;gap:8px;flex-wrap:wrap}
+.ml-b{display:inline-flex;align-items:center;gap:5px;padding:9px 18px;border-radius:10px;font-family:‘Tajawal’;font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.2s;border:none}
+.ml-b1{background:var(–accent);color:#fff}
+.ml-b1:hover{box-shadow:0 4px 14px rgba(124,94,20,0.25)}
+.ml-b2{background:var(–bg);color:var(–ink2);border:1px solid var(–bg2)}
+.ml-b2:hover{border-color:var(–green);color:var(–green)}
+
+/* Notification FAB */
+.nf{position:fixed;bottom:20px;left:20px;z-index:50;width:44px;height:44px;border-radius:50%;background:var(–accent);color:#fff;border:none;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(124,94,20,0.2);transition:all 0.3s}
+.nf:hover{transform:scale(1.1)}
+@keyframes nfp{0%,100%{box-shadow:0 6px 24px rgba(124,94,20,0.25)}50%{box-shadow:0 6px 24px rgba(124,94,20,0.4),0 0 0 8px rgba(124,94,20,0.06)}}
+.nf.done{background:var(–green);animation:none}
+
+/* ══════ RESPONSIVE ══════ */
+/* Mobile styles always applied (body is 480px max) */
+.cd{padding:20px}
+.adi,.wa-in,.app-in{flex-direction:column;text-align:center;gap:12px;padding:18px}
+.wa-ic{display:none}
+.app-bs{justify-content:center}
+.ae-row{flex-direction:column}
+.dlc{min-width:170px;max-width:170px}
+.prc{min-width:145px;max-width:145px}
+.cd.hid{display:none}
 </style>
-</head>
 
+</head>
 <body>
 
-<header class="header">
-<h1>كم باقي؟ ⏳</h1>
-<p>العد التنازلي المباشر</p>
-</header>
+<!-- Mode Toggle -->
 
-<main class="grid" id="grid"></main>
+<div class="mode-bar">
+  <button class="mode-b on" id="mLight" onclick="setMode('light')">☀️</button>
+  <button class="mode-b" id="mDark" onclick="setMode('dark')">🌙</button>
+</div>
+
+<div class="spn"><div class="spn-in">
+  <a href="https://wa.me/966570650004" target="_blank" class="spn-a" style="color:var(--accent);font-weight:800">📢 للإعلان</a>
+  <span style="color:var(--bg2)">|</span>
+  <a href="https://mufa-sa.com" target="_blank" class="spn-a"><span>📦</span> منصة الشحن المخفض — سمسا وأرامكس بـ ٢٦ ريال</a>
+</div></div>
+
+<header class="hdr"><h1>كم باقي ؟</h1><p>العد التنازلي المباشر لأهم المناسبات</p></header>
+
+<nav class="flt">
+  <button class="fb on" data-f="all">الكل</button>
+  <button class="fb" data-f="دينية">دينية</button>
+  <button class="fb" data-f="وطنية">وطنية</button>
+  <button class="fb" data-f="مالية">مالية</button>
+  <button class="fb" data-f="دراسية">🎓 دراسية</button>
+  <button class="fb" data-f="رياضية">رياضية</button>
+  <button class="fb" data-f="عروض">عروض</button>
+  <button class="fb" data-f="خاصة">⭐ مواعيدي</button>
+</nav>
+
+<div class="ae-bar">
+  <button class="ae-btn" id="aeToggle" onclick="document.getElementById('aeForm').classList.toggle('show')">➕ أضف موعدك الخاص</button>
+  <div class="ae-f" id="aeForm">
+    <input type="text" id="ceT" placeholder="اسم الموعد (مثال: عيد ميلاد أحمد)">
+    <div class="ae-row"><input type="date" id="ceD"><input type="text" id="ceI" placeholder="🎂" maxlength="4" style="max-width:70px;text-align:center"></div>
+    <button class="ae-sub" onclick="addCE()">✅ أضف الموعد</button>
+  </div>
+</div>
+
+<main class="grd" id="g1"></main>
+
+<div class="adb" id="ad1"><span class="adi-tag">إعلان</span><a href="https://www.noon.com" target="_blank" class="adi"><span class="adi-ic">🛒</span><div class="adi-c"><h3>كود خصم نون: ACC9 — وفّر حتى ١٠٪</h3><p>خصم فوري + كاش باك للعملاء الجدد على الإلكترونيات والأزياء</p></div><span class="adi-cta" onclick="event.preventDefault();navigator.clipboard.writeText('ACC9');this.textContent='✅ تم!'">📋 انسخ الكود</span></a></div>
+
+<section class="dls" id="dlsSec"><div class="dls-h"><h2 class="dls-t">🔥 عروض المناسبة</h2><span class="dls-tg">روابط تسويقية</span></div><div class="dls-sc">
+  <a href="https://www.noon.com/saudi-ar/electronics/" target="_blank" class="dlc"><span class="dlc-em">📱</span><span class="dlc-st">نون</span><h3 class="dlc-nm">إلكترونيات وجوالات</h3><p class="dlc-ds">كود ACC9 لخصم إضافي</p><span class="dlc-bd">حتى ٣٥٪</span></a>
+  <a href="https://www.amazon.sa/deals" target="_blank" class="dlc"><span class="dlc-em">🎁</span><span class="dlc-st">أمازون</span><h3 class="dlc-nm">عروض اليوم</h3><p class="dlc-ds">صفقات يومية محدودة</p><span class="dlc-bd">حتى ٦٠٪</span></a>
+  <a href="https://www.jarir.com" target="_blank" class="dlc"><span class="dlc-em">💻</span><span class="dlc-st">جرير</span><h3 class="dlc-nm">لابتوبات وشاشات</h3><p class="dlc-ds">أجهزة بأقل الأسعار</p><span class="dlc-bd">عروض خاصة</span></a>
+  <a href="https://www.saadeddin.com" target="_blank" class="dlc"><span class="dlc-em">🍫</span><span class="dlc-st">سعد الدين</span><h3 class="dlc-nm">حلويات وشوكولاتة</h3><p class="dlc-ds">بوكسات فاخرة للضيوف</p><span class="dlc-bd">توصيل مجاني</span></a>
+  <a href="https://www.almosafer.com" target="_blank" class="dlc"><span class="dlc-em">✈️</span><span class="dlc-st">المسافر</span><h3 class="dlc-nm">حجز طيران + فندق</h3><p class="dlc-ds">باقات سفر لإجازة العيد</p><span class="dlc-bd">وفّر ٣٥٪</span></a>
+</div></section>
+
+<div class="grd" id="g2"></div>
+
+<div class="adb" id="ad2"><span class="adi-tag">إعلان</span><a href="https://www.amazon.sa" target="_blank" class="adi"><span class="adi-ic">🛍️</span><div class="adi-c"><h3>أمازون السعودية — عروض يومية حتى ٦٠٪</h3><p>شحن مجاني للطلبات فوق ١٠٠ ريال مع Prime</p></div><span class="adi-cta">تسوّق الآن ←</span></a></div>
+
+<section class="prm"><div class="prm-h"><h2 class="prm-t">🎨 تصاميم وبطاقات</h2></div><div class="prm-sc">
+  <a href="#" class="prc"><div class="prc-pv" style="background:linear-gradient(135deg,#e8e4f0,#d4c8e8)">🌙</div><div class="prc-in"><h3 class="prc-nm">بطاقة رمضان كريم</h3><div class="prc-pr"><span class="prc-fr">مجانية</span><span class="prc-by">تحميل</span></div></div></a>
+  <a href="#" class="prc"><div class="prc-pv" style="background:linear-gradient(135deg,#e0f0e4,#c0e0c8)">🐑</div><div class="prc-in"><h3 class="prc-nm">بطاقة عيد الأضحى</h3><div class="prc-pr"><span class="prc-fr">مجانية</span><span class="prc-by">تحميل</span></div></div></a>
+  <a href="#" class="prc"><div class="prc-pv" style="background:linear-gradient(135deg,#f0e4e4,#e8d0d0)">🎉</div><div class="prc-in"><h3 class="prc-nm">بوكس تهاني الفطر</h3><div class="prc-pr"><span class="prc-am">٩.٩٩ ر.س</span><span class="prc-by">شراء</span></div></div></a>
+  <a href="#" class="prc"><div class="prc-pv" style="background:linear-gradient(135deg,#e0ece8,#c8e0d8)">🇸🇦</div><div class="prc-in"><h3 class="prc-nm">بوكس اليوم الوطني</h3><div class="prc-pr"><span class="prc-am">١٤.٩٩ ر.س</span><span class="prc-by">شراء</span></div></div></a>
+</div></section>
+
+<section class="wa-sec"><div class="wa-in"><div class="wa-ic">💬</div><div class="wa-tx"><h3>بوت "كم باقي؟" على واتساب 🤖</h3><p>أرسل اسم أي مناسبة ويرد عليك فورًا بالعد التنازلي + دعاء أو تهنئة — يذكّرك تلقائيًا!</p><a href="https://wa.me/966500000000?text=كم%20باقي%20على%20رمضان؟" target="_blank" class="wa-bt">💬 ابدأ محادثة واتساب</a><p class="wa-nt">✅ مجاني • ذكاء اصطناعي • بدون تحميل</p></div></div></section>
+
+<div class="app"><div class="app-in"><div class="app-mk">📱</div><div class="app-tx"><h3>حمّل تطبيق "كم باقي؟"</h3><p>تذكيرات ذكية • ويدجت للشاشة الرئيسية</p></div><div class="app-bs"><a href="#" class="app-sb"> App Store</a><a href="#" class="app-sb">▶ Google Play</a></div></div></div>
+
+<section class="fsp"><div class="fsp-t">بدعم ورعاية</div><div class="fsp-g">
+  <a href="https://www.noon.com" target="_blank" class="fsp-a"><span>🛒</span>نون</a>
+  <a href="https://www.amazon.sa" target="_blank" class="fsp-a"><span>🛍️</span>أمازون</a>
+  <a href="https://www.saadeddin.com" target="_blank" class="fsp-a"><span>🍫</span>سعد الدين</a>
+  <a href="https://www.stc.com.sa" target="_blank" class="fsp-a"><span>📱</span>stc</a>
+  <a href="https://www.jarir.com" target="_blank" class="fsp-a"><span>🏪</span>جرير</a>
+  <a href="https://www.almosafer.com" target="_blank" class="fsp-a"><span>✈️</span>المسافر</a>
+  <a href="https://www.saudia.com" target="_blank" class="fsp-a"><span>🛩️</span>السعودية</a>
+</div></section>
+
+<footer class="ftr">كم باقي؟ © 2026 — يُحدَّث تلقائيًا كل ثانية</footer>
+
+<button class="nf" id="nfBtn" onclick="this.textContent='✅';this.classList.add('done')">🔔</button>
+
+<div class="mo" id="mo"><div class="ml"><button class="ml-x" onclick="document.getElementById('mo').classList.remove('on')">✕</button><div id="moB"></div></div></div>
 
 <script>
+const DL={
+'رمضان 1448':[{i:'🤲',l:'دعاء دخول رمضان',t:'dua',c:'اللَّهُمَّ أَهِلَّهُ عَلَيْنَا بِالْيُمْنِ وَالْإِيمَانِ\nوَالسَّلَامَةِ وَالْإِسْلَامِ\nرَبِّي وَرَبُّكَ اللَّهُ\n\nاللَّهُمَّ بَلِّغْنَا رَمَضَانَ وَبَارِكْ لَنَا فِيهِ'},{i:'🌙',l:'بطاقة تهنئة',t:'g',c:'مبارك عليكم شهر رمضان 🌙\n\nأسأل الله أن يبلّغنا وإياكم رمضان\nوأن يتقبّل منا ومنكم صالح الأعمال\n\nكل عام وأنتم بخير 🤍'}],
+'عيد الفطر 1447':[{i:'🤲',l:'تكبيرات العيد',t:'dua',c:'اللهُ أَكْبَرُ اللهُ أَكْبَرُ اللهُ أَكْبَرُ\nلَا إِلَهَ إِلَّا اللهُ\nاللهُ أَكْبَرُ اللهُ أَكْبَرُ وَلِلَّهِ الحَمْدُ'},{i:'🎉',l:'بطاقة تهنئة',t:'g',c:'عيدكم مبارك 🎉\nتقبّل الله منّا ومنكم صالح الأعمال\nكل عام وأنتم بخير 🤍'}],
+'يوم عرفة 1447':[{i:'🤲',l:'دعاء يوم عرفة',t:'dua',c:'لا إلهَ إلَّا اللهُ وحدَهُ لا شريكَ لهُ\nلهُ المُلكُ ولهُ الحمدُ\nوهوَ على كلِّ شيءٍ قديرٌ\n\nاللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ'}],
+'عيد الأضحى 1447':[{i:'🐑',l:'بطاقة تهنئة',t:'g',c:'عيد أضحى مبارك 🐑\nتقبّل الله طاعتكم\nكل عام وأنتم بخير 🤍'}],
+'اليوم الوطني السعودي':[{i:'🇸🇦',l:'بطاقة وطنية',t:'g',c:'🇸🇦 اليوم الوطني\nدام عزّك يا وطن\n💚 نحلم ونحقق 🤍'}],
+'يوم التأسيس':[{i:'🏴',l:'بطاقة يوم التأسيس',t:'g',c:'🏴 يوم التأسيس\nيوم بدينا 1727م\nدامت المملكة شامخة 💚'}]
+};
 
-/* ===== EVENTS ===== */
-const events = [
-{title:"رمضان",date:"2027-02-08"},
-{title:"عيد الفطر",date:"2026-03-20"},
-{title:"عيد الأضحى",date:"2026-05-27"},
-{title:"الراتب",date:"2026-05-27"}
+function gSD(y,m){let d=new Date(y,m-1,27);const w=d.getDay();if(w===5)d.setDate(26);if(w===6)d.setDate(28);return d}
+function genSal(){const n=new Date(),e=[],ar=['','يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'],dy=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+let c=0,y=n.getFullYear(),m=n.getMonth()+1;
+while(c<3){const s=gSD(y,m);if(s>n){const ds=`${s.getFullYear()}-${String(s.getMonth()+1).padStart(2,'0')}-${String(s.getDate()).padStart(2,'0')}`;const nt=s.getDate()!==27?(s.getDate()===26?' (٢٧ جمعة)':' (٢٧ سبت)'):'';
+e.push({ic:'💰',tt:`نزول الراتب (${ar[s.getMonth()+1]})`,dt:ds,hj:`${dy[s.getDay()]} ${s.getDate()} ${ar[s.getMonth()+1]}${nt}`,cat:'مالية',ac:'#0d7a50'});c++}m++;if(m>12){m=1;y++}}return e}
+
+let CE=[];
+async function ldCE(){try{const r=await window.storage.get('custom-events');if(r&&r.value)CE=JSON.parse(r.value)}catch(e){CE=[]}}
+async function svCE(){try{await window.storage.set('custom-events',JSON.stringify(CE))}catch(e){}}
+async function addCE(){
+  const t=document.getElementById('ceT').value.trim(),d=document.getElementById('ceD').value,ic=document.getElementById('ceI').value.trim()||'📌';
+  if(!t||!d)return;
+  CE.push({ic,tt:t,dt:d,hj:d,cat:'خاصة',ac:'#2548c2',cu:true,id:Date.now()});
+  await svCE();render();
+  document.getElementById('ceT').value='';document.getElementById('ceD').value='';document.getElementById('ceI').value='';
+  document.getElementById('aeForm').classList.remove('show');
+  const b=document.getElementById('aeToggle');b.textContent='✅ تمت الإضافة!';b.style.color='var(--green)';b.style.borderColor='var(--green)';
+  setTimeout(()=>{b.textContent='➕ أضف موعدك الخاص';b.style.color='';b.style.borderColor=''},2000);
+}
+async function delCE(id){CE=CE.filter(e=>e.id!==id);await svCE();render()}
+
+const FE=[
+  {ic:'🌙',tt:'رمضان 1448',dt:'2027-02-08',hj:'١ رمضان ١٤٤٨',cat:'دينية',ac:'#7c5e14'},
+  {ic:'🕌',tt:'عيد الفطر 1447',dt:'2026-03-20',hj:'١ شوال ١٤٤٧',cat:'دينية',ac:'#0d7a50'},
+  {ic:'🕋',tt:'يوم عرفة 1447',dt:'2026-05-26',hj:'٩ ذو الحجة ١٤٤٧',cat:'دينية',ac:'#b85a08'},
+  {ic:'🐑',tt:'عيد الأضحى 1447',dt:'2026-05-27',hj:'١٠ ذو الحجة ١٤٤٧',cat:'دينية',ac:'#7c5e14'},
+  {ic:'📅',tt:'رأس السنة الهجرية 1448',dt:'2026-06-16',hj:'١ محرم ١٤٤٨',cat:'دينية',ac:'#2548c2'},
+  {ic:'🇸🇦',tt:'اليوم الوطني السعودي',dt:'2026-09-23',hj:'٢٣ سبتمبر',cat:'وطنية',ac:'#0d7a50'},
+  {ic:'🏴',tt:'يوم التأسيس',dt:'2027-02-22',hj:'٢٢ فبراير',cat:'وطنية',ac:'#2548c2'},
+  {ic:'💸',tt:'حساب المواطن (أبريل)',dt:'2026-04-10',hj:'١٠ أبريل',cat:'مالية',ac:'#b85a08'},
+  {ic:'🏷️',tt:'الجمعة البيضاء 2026',dt:'2026-11-27',hj:'٢٧ نوفمبر',cat:'عروض',ac:'#b8184e'},
+  {ic:'⚽',tt:'كأس العالم 2026',dt:'2026-06-11',hj:'١١ يونيو',cat:'رياضية',ac:'#b85a08'},
+  {ic:'🏖️',tt:'إجازة عيد الفطر (مدارس)',dt:'2026-03-06',hj:'١٧ رمضان — حتى ٢٨ مارس',cat:'دراسية',ac:'#0d7a50'},
+  {ic:'🏖️',tt:'إجازة عيد الأضحى (مدارس)',dt:'2026-05-22',hj:'٥ ذو الحجة — حتى ١ يونيو',cat:'دراسية',ac:'#0d7a50'},
+  {ic:'📝',tt:'اختبارات نهاية العام',dt:'2026-06-06',hj:'١١ ذو القعدة — حتى ١٧ يونيو',cat:'دراسية',ac:'#b8184e'},
+  {ic:'🎓',tt:'بداية إجازة الصيف',dt:'2026-06-25',hj:'١٠ محرم ١٤٤٨',cat:'دراسية',ac:'#b8184e'},
+  {ic:'🎒',tt:'بداية العام الدراسي ١٤٤٨',dt:'2026-08-23',hj:'١٠ ربيع الأول ١٤٤٨',cat:'دراسية',ac:'#2548c2'},
+  {ic:'🍂',tt:'إجازة الخريف ١٤٤٨',dt:'2026-11-20',hj:'٢٠–٢٨ نوفمبر',cat:'دراسية',ac:'#b85a08'}
 ];
 
-/* ===== TIME ===== */
-function getDiff(date){
-const now=new Date();
-const target=new Date(date);
-const diff=target-now;
+function allEv(){return[...FE,...genSal(),...CE]}
+function diff(d){const n=new Date(),t=new Date(d+'T00:00:00'),df=t-n;if(df<=0)return null;return{d:Math.floor(df/864e5),h:Math.floor((df%864e5)/36e5),m:Math.floor((df%36e5)/6e4),s:Math.floor((df%6e4)/1e3),t:df}}
 
-if(diff<=0) return "انتهى";
+function shX(t,d){window.open(`https://x.com/intent/tweet?text=${encodeURIComponent(`⏳ كم باقي على ${t}؟\n📅 ${d}\nاعرف الآن 👇`)}`,'_blank')}
+function shW(t,d){window.open(`https://wa.me/?text=${encodeURIComponent(`⏳ كم باقي على ${t}؟\n📅 ${d}\nاعرف الآن 👇`)}`,'_blank')}
+function shT(t,d){window.open(`https://t.me/share/url?text=${encodeURIComponent(`⏳ كم باقي على ${t}؟\n📅 ${d}`)}`,'_blank')}
+function cpL(t,d){navigator.clipboard.writeText(`⏳ كم باقي على ${t}؟\n📅 ${d}`).then(()=>alert('تم النسخ! 📋'))}
 
-const d=Math.floor(diff/86400000);
-const h=Math.floor((diff/3600000)%24);
-const m=Math.floor((diff/60000)%60);
+function bCard(ev,nr){
+  const dl=DL[ev.tt];
+  const dlB=dl?dl.map((d,i)=>`<button class="ab" onclick="openM('${ev.tt}',${i})">${d.i} ${d.l}</button>`).join(''):'';
+  const cuB=ev.cu?`<span class="b-cu">⭐ خاصة</span><button class="del-cu" onclick="delCE(${ev.id})" title="حذف">✕</button>`:'';
+  const t=ev.tt.replace(/'/g,"\\'"),dd=ev.dt;
+  return `<article class="cd ${nr?'nr':''}" data-dt="${ev.dt}" data-cat="${ev.cat}" style="--ca:${ev.ac}">
+    ${nr?'<span class="b-nr">⚡ الأقرب</span>':''}
+    ${!nr&&!ev.cu?'<span class="b-live">مباشر</span>':''}${cuB}
+    <div class="cd-top"><span class="cd-ic">${ev.ic}</span><span class="cd-cat">${ev.cat}</span></div>
+    <h2 class="cd-tt">${ev.tt}</h2>
+    <p class="cd-dt">${ev.hj} — ${ev.dt}</p>
+    <div class="ct" data-tg="${ev.dt}">
+      <div class="cu"><div class="cn" data-d>--</div><div class="cl">يوم</div></div>
+      <span class="cs">:</span>
+      <div class="cu"><div class="cn" data-h>--</div><div class="cl">ساعة</div></div>
+      <span class="cs">:</span>
+      <div class="cu"><div class="cn" data-m>--</div><div class="cl">دقيقة</div></div>
+      <span class="cs">:</span>
+      <div class="cu"><div class="cn" data-s>--</div><div class="cl">ثانية</div></div>
+    </div>
+    <div class="cd-ac">${dlB}<button class="ab tw" onclick="shX('${t}','${dd}')">𝕏</button><button class="ab wa" onclick="shW('${t}','${dd}')">واتساب</button><button class="ab tg" onclick="shT('${t}','${dd}')">تلقرام</button><button class="ab" onclick="cpL('${t}','${dd}')">📋</button></div>
+  </article>`}
 
-return d+" يوم "+h+" ساعة "+m+" دقيقة";
-}
-
-/* ===== RENDER ===== */
 function render(){
-const grid=document.getElementById("grid");
-grid.innerHTML="";
-
-events.forEach(e=>{
-grid.innerHTML+=`
-<div class="card">
-<div class="card-title">${e.title}</div>
-<div class="countdown">${getDiff(e.date)}</div>
-</div>
-`;
-});
+  const s=allEv().map(e=>({...e,df:diff(e.dt)})).filter(e=>e.df!==null).sort((a,b)=>a.df.t-b.df.t);
+  document.getElementById('g1').innerHTML=s.slice(0,6).map((e,i)=>bCard(e,i===0)).join('');
+  document.getElementById('g2').innerHTML=s.slice(6).map(e=>bCard(e,false)).join('');
 }
+function upd(){document.querySelectorAll('.ct').forEach(el=>{const d=diff(el.dataset.tg);if(!d)return;el.querySelector('[data-d]').textContent=String(d.d).padStart(2,'0');el.querySelector('[data-h]').textContent=String(d.h).padStart(2,'0');el.querySelector('[data-m]').textContent=String(d.m).padStart(2,'0');el.querySelector('[data-s]').textContent=String(d.s).padStart(2,'0')})}
 
-setInterval(render,1000);
-render();
+function openM(t,i){const it=DL[t][i];const lb={dua:'دعاء',g:'تهنئة'};
+document.getElementById('moB').innerHTML=`<div class="ml-ic">${it.i}</div><h2 class="ml-tt">${it.l}</h2><p class="ml-ds">${lb[it.t]||''} — ${t}</p><div class="ml-ct">${it.c}</div><div class="ml-ac"><button class="ml-b ml-b1" onclick="navigator.clipboard.writeText(document.querySelector('.ml-ct').textContent).then(()=>{this.textContent='✅ تم!'})">📋 نسخ</button><button class="ml-b ml-b2" onclick="window.open('https://wa.me/?text='+encodeURIComponent(document.querySelector('.ml-ct').textContent),'_blank')">واتساب</button></div>`;
+document.getElementById('mo').classList.add('on')}
+document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)this.classList.remove('on')});
 
+document.querySelectorAll('.fb').forEach(b=>{b.addEventListener('click',()=>{
+  document.querySelectorAll('.fb').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const f=b.dataset.f;
+  document.querySelectorAll('.cd').forEach(c=>{c.classList.toggle('hid',f!=='all'&&c.dataset.cat!==f)});
+  const sh=f==='all';['ad1','ad2','dlsSec'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display=sh?'':'none'});
+})});
+
+// ══════ MODE ══════
+function setMode(m){
+  if(m==='dark'){document.documentElement.setAttribute('data-th','dark');document.getElementById('mDark').classList.add('on');document.getElementById('mLight').classList.remove('on')}
+  else{document.documentElement.removeAttribute('data-th');document.getElementById('mLight').classList.add('on');document.getElementById('mDark').classList.remove('on')}
+  try{window.storage.set('mode',m)}catch(e){}
+}
+async function ldMode(){try{const r=await window.storage.get('mode');if(r&&r.value)setMode(r.value)}catch(e){}}
+
+async function init(){await ldCE();await ldMode();render();upd();setInterval(upd,1000)}
+init();
 </script>
 
 </body>
