@@ -33,6 +33,12 @@ html{color-scheme:light only;background:#0a0a1a !important;min-height:100vh}
 }
 body{font-family:'Tajawal',sans-serif;min-height:100vh;line-height:1.9;-webkit-font-smoothing:antialiased;background:var(--bg);color:var(--ink);max-width:480px;margin:0 auto;position:relative;box-shadow:0 0 80px rgba(99,102,241,0.25)}
 
+/* ══════ iOS SAFARI OVERRIDE - Force text colors to prevent default blue links ══════ */
+a,a:link,a:visited,a:hover,a:active{color:inherit;-webkit-tap-highlight-color:transparent}
+a h1,a h2,a h3,a h4,a h5,a h6,a p,a span,a div,a strong{color:inherit!important;-webkit-text-fill-color:inherit!important}
+h1,h2,h3,h4,h5,h6{color:var(–ink);-webkit-text-fill-color:var(–ink)}
+p{color:var(–ink2);-webkit-text-fill-color:var(–ink2)}
+
 /* ══════ HEADER - COSMIC ══════ */
 .hdr{text-align:center;padding:36px 14px 30px;background:linear-gradient(135deg,#1a0f3e 0%,#2a1d8f 35%,#4c1d95 70%,#1e1b4b 100%);position:relative;overflow:hidden;border-bottom:1px solid var(–bg2)}
 .hdr::before{content:’’;position:absolute;inset:0;background:
@@ -151,13 +157,19 @@ animation:aurora 12s ease infinite;pointer-events:none}
 .cd:hover .del-cu{opacity:0.7}
 .del-cu:hover{opacity:1!important}
 
+/* Force link colors to not use default blue - CRITICAL for iOS Safari */
+.adi,.dlc,.prc,.fsp-a,.spn-a,.app-sb,.wa-bt,.adi-cta,.dls-tg,.prm-a{color:var(–ink)!important;text-decoration:none!important;-webkit-text-fill-color:var(–ink)!important}
+.adi *,.dlc *,.prc *,.fsp-a *,.app-sb *,.spn-a *{color:inherit!important;-webkit-text-fill-color:inherit!important}
+.adi-c h3,.dlc-nm,.prc-nm,.app-tx h3,.wa-tx h3{color:var(–ink)!important;-webkit-text-fill-color:var(–ink)!important}
+.adi-c p,.app-tx p,.wa-tx p,.prc-nm + *{color:var(–ink2)!important;-webkit-text-fill-color:var(–ink2)!important}
+
 /* ══════ AD BANNER ══════ */
 .adb{padding:0 14px 20px;position:relative}
 .adi{background:var(–card);border:1px solid rgba(0,0,0,0.06);border-radius:var(–r);padding:20px 24px;display:flex;align-items:center;gap:18px;transition:all 0.3s;text-decoration:none;color:var(–ink);position:relative;overflow:hidden}
 .adi::before{content:’’;position:absolute;inset:0;background:linear-gradient(135deg,var(–accent-bg),transparent 60%);pointer-events:none}
 .adi:hover{border-color:var(–accent-border);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.05)}
 .adi-ic{font-size:1.6rem;flex-shrink:0}
-.adi-c{flex:1}.adi-c h3{font-size:0.9rem;font-weight:700;margin-bottom:1px}
+.adi-c{flex:1}.adi-c h3{font-size:0.9rem;font-weight:800;margin-bottom:1px;color:var(–ink)}
 .adi-c p{font-size:0.75rem;color:var(–ink2);font-weight:400}
 .adi-cta{background:var(–accent);color:#fff;padding:7px 16px;border-radius:50px;font-family:‘Tajawal’;font-size:0.75rem;font-weight:700;white-space:nowrap;flex-shrink:0;cursor:pointer}
 .adi-tag{position:absolute;top:8px;left:24px;font-size:0.58rem;color:var(–ink3);opacity:0.4;letter-spacing:1px;font-weight:700}
@@ -173,7 +185,7 @@ animation:aurora 12s ease infinite;pointer-events:none}
 .dlc:hover{border-color:var(–accent-border);transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.05)}
 .dlc-em{font-size:1.5rem;margin-bottom:6px}
 .dlc-st{font-size:0.6rem;color:var(–green);font-weight:700;letter-spacing:0.8px;margin-bottom:2px}
-.dlc-nm{font-size:0.82rem;font-weight:700;margin-bottom:3px;line-height:1.4}
+.dlc-nm{font-size:0.82rem;font-weight:800;margin-bottom:3px;line-height:1.4;color:var(–ink)}
 .dlc-ds{font-size:0.7rem;color:var(–ink3);font-weight:400;margin-bottom:8px;line-height:1.5;flex:1}
 .dlc-bd{display:inline-block;background:var(–rose-bg);color:var(–rose);font-size:0.64rem;font-weight:700;padding:2px 7px;border-radius:5px;align-self:flex-start}
 
@@ -187,7 +199,7 @@ animation:aurora 12s ease infinite;pointer-events:none}
 .prc-pv{height:85px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;position:relative}
 .prc-pv::after{content:’’;position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,var(–card))}
 .prc-in{padding:10px 12px}
-.prc-nm{font-size:0.76rem;font-weight:700;margin-bottom:3px}
+.prc-nm{font-size:0.76rem;font-weight:800;margin-bottom:3px;color:var(–ink)}
 .prc-pr{display:flex;align-items:center;justify-content:space-between}
 .prc-am{font-size:0.72rem;color:var(–accent);font-weight:700}
 .prc-fr{font-size:0.64rem;color:var(–green);font-weight:700}
