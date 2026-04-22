@@ -1,218 +1,712 @@
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>كم باقي؟</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
-
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light only">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>كم باقي؟ | العد التنازلي للمناسبات</title>
+<meta name="description" content="كم باقي على رمضان؟ كم باقي على العيد؟ كم باقي على الراتب؟ اعرف الآن بالعد التنازلي المباشر">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#141030;
-  --bg2:#1f1a45;
-  --card:#1e1945;
-  --ink:#f0eaff;
-  --ink2:#c4b5fd;
-  --accent:#a78bfa;
+:root {
+  --bg:#141030;--bg2:#1f1a45;--card:#1e1945;--card-hover:#252057;
+  --ink:#f0eaff;--ink2:#c4b5fd;--ink3:#8b84b8;
+  --accent:#a78bfa;--accent-bg:rgba(167,139,250,0.1);--accent-border:rgba(167,139,250,0.25);
+  --accent-glow:#6366f1;
+  --green:#34d399;--green-bg:rgba(52,211,153,0.1);
+  --rose:#f472b6;--rose-bg:rgba(244,114,182,0.1);
+  --blue:#818cf8;--blue-bg:rgba(129,140,248,0.1);
+  --orange:#fbbf24;--orange-bg:rgba(251,191,36,0.1);
+  --r:14px;
 }
+*{margin:0;padding:0;box-sizing:border-box;letter-spacing:0}
+body,h1,h2,h3,p,span,button,a,input{letter-spacing:0!important;text-rendering:optimizeLegibility;-webkit-font-feature-settings:"liga","calt";font-feature-settings:"liga","calt"}
+html{color-scheme:light only;background:#0a0a1a !important;min-height:100vh}
+@media (prefers-color-scheme: dark){
+  html{background:#0a0a1a !important}
+}
+body{font-family:'Tajawal',sans-serif;min-height:100vh;line-height:1.9;-webkit-font-smoothing:antialiased;background:var(--bg);color:var(--ink);max-width:480px;margin:0 auto;position:relative;box-shadow:0 0 80px rgba(99,102,241,0.25)}
 
-{margin:0;padding:0;box-sizing:border-box}
+/* ══════ iOS SAFARI OVERRIDE - Force text colors to prevent default blue links ══════ */
+a,a:link,a:visited,a:hover,a:active{color:inherit;-webkit-tap-highlight-color:transparent}
+a h1,a h2,a h3,a h4,a h5,a h6,a p,a span,a div,a strong{color:inherit!important;-webkit-text-fill-color:inherit!important}
+h1,h2,h3,h4,h5,h6{color:var(–ink);-webkit-text-fill-color:var(–ink)}
+p{color:var(–ink2);-webkit-text-fill-color:var(–ink2)}
 
-body{
-  font-family:'Tajawal',sans-serif;
-  background:var(--bg);
-  color:var(--ink);
-  max-width:480px;
-  margin:auto;
-}
+/* ══════ HEADER - COSMIC ══════ */
+.hdr{text-align:center;padding:36px 14px 30px;background:linear-gradient(135deg,#1a0f3e 0%,#2a1d8f 35%,#4c1d95 70%,#1e1b4b 100%);position:relative;overflow:hidden;border-bottom:1px solid var(–bg2)}
+.hdr::before{content:’’;position:absolute;inset:0;background:
+radial-gradient(ellipse at 20% 30%,rgba(139,92,246,0.35),transparent 50%),
+radial-gradient(ellipse at 80% 70%,rgba(236,72,153,0.25),transparent 50%),
+radial-gradient(ellipse at 50% 10%,rgba(99,102,241,0.3),transparent 50%);
+animation:aurora 12s ease infinite;pointer-events:none}
+@keyframes aurora{0%,100%{opacity:0.9;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+.hdr::after{content:’’;display:block;margin:18px auto 0;width:40px;height:2px;background:linear-gradient(90deg,transparent,#c4b5fd,transparent);border-radius:2px;position:relative;z-index:2}
+.hdr h1{font-size:2.6rem;font-weight:700;background:linear-gradient(135deg,#ffffff 0%,#c4b5fd 50%,#fbbf24 100%);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;line-height:1.4;position:relative;z-index:2;animation:shine 4s ease infinite;text-shadow:0 0 40px rgba(196,181,253,0.3)}
+@keyframes shine{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hdr p{color:rgba(255,255,255,0.75);font-weight:500;font-size:0.92rem;position:relative;z-index:2;letter-spacing:0.3px}
+/* Stars */
+.hdr .star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;opacity:0.8;animation:twinkle 3s ease infinite}
+.hdr .star:nth-child(1){top:20%;left:15%;animation-delay:0s}
+.hdr .star:nth-child(2){top:60%;left:85%;animation-delay:1s;width:3px;height:3px}
+.hdr .star:nth-child(3){top:30%;left:75%;animation-delay:2s}
+.hdr .star:nth-child(4){top:75%;left:25%;animation-delay:0.5s;width:3px;height:3px}
+.hdr .star:nth-child(5){top:15%;left:60%;animation-delay:1.5s}
+@keyframes twinkle{0%,100%{opacity:0.3;transform:scale(0.8)}50%{opacity:1;transform:scale(1.2)}}
 
-/ HEADER /
-.hdr{
-  text-align:center;
-  padding:30px;
-  background:linear-gradient(135deg,#1a0f3e,#4c1d95);
-}
-.hdr h1{
-  font-size:2.4rem;
-  font-weight:900;
-}
-.hdr p{
-  opacity:.8;
-  font-size:.9rem;
-}
+/* ══════ SPONSORS - top ad strip ══════ */
+.spn{padding:10px 14px;background:linear-gradient(90deg,#1e1b4b,#2a1d8f,#1e1b4b);color:#fff;position:relative;overflow:hidden}
+.spn::before{content:’’;position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(196,181,253,0.1),transparent);animation:slide 8s linear infinite}
+@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.spn-in{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center;font-size:0.72rem;position:relative;z-index:2}
+.spn-a{text-decoration:none;color:#fff;padding:5px 11px;border-radius:20px;font-size:0.7rem;font-weight:700;background:rgba(255,255,255,0.12);border:1px solid rgba(196,181,253,0.25);transition:all 0.2s;display:inline-flex;align-items:center;gap:4px;line-height:1.5;backdrop-filter:blur(10px)}
+.spn-a:hover{background:rgba(255,255,255,0.22);border-color:rgba(196,181,253,0.5)}
+.spn-a.spn-cta{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#1a0f3e;border-color:#fbbf24;font-weight:800;box-shadow:0 2px 10px rgba(251,191,36,0.3)}
 
-/ FILTER /
-.flt{
-  display:flex;
-  gap:6px;
-  padding:10px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-.fb{
-  padding:8px 16px;
-  border-radius:30px;
-  border:1px solid #333;
-  background:none;
-  color:#bbb;
-  cursor:pointer;
-}
-.fb.on{
-  background:var(--accent);
-  color:#fff;
-  border:none;
-}
+/* ══════ FILTERS ══════ */
+.flt{display:flex;justify-content:center;gap:5px;padding:12px 10px 20px;flex-wrap:wrap}
+button.fb,.fb{background:rgba(167,139,250,0.06)!important;border:1px solid rgba(167,139,250,0.15);color:#f0eaff!important;-webkit-text-fill-color:#f0eaff!important;padding:9px 18px;border-radius:50px;font-family:‘Tajawal’;font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.25s;line-height:1.2}
+button.fb:hover,.fb:hover{background:rgba(167,139,250,0.15)!important;border-color:rgba(167,139,250,0.35);color:#fff!important;-webkit-text-fill-color:#fff!important}
+button.fb.on,.fb.on{background:linear-gradient(135deg,#8b5cf6,#6366f1)!important;color:#fff!important;-webkit-text-fill-color:#fff!important;border-color:transparent;box-shadow:0 3px 10px rgba(139,92,246,0.35)}
 
-/ GRID /
-.grd{
-  padding:10px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
+/* ══════ ADD EVENT ══════ */
+.ae-bar{padding:0 14px 16px}
+button.ae-btn,.ae-btn{width:100%;padding:14px;border:1.5px dashed rgba(167,139,250,0.25);border-radius:var(–r);background:transparent;color:#c4b5fd!important;-webkit-text-fill-color:#c4b5fd!important;font-family:‘Tajawal’;font-size:0.9rem;font-weight:700;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px}
+button.ae-btn:hover,.ae-btn:hover{border-color:#a78bfa;background:rgba(167,139,250,0.08);color:#fff!important;-webkit-text-fill-color:#fff!important}
+.ae-f{display:none;background:var(–card);border:1px solid var(–bg2);border-radius:var(–r);padding:18px;gap:10px;flex-direction:column;box-shadow:0 4px 20px rgba(0,0,0,0.04)}
+.ae-f.show{display:flex}
+.ae-f input{padding:10px 14px;border-radius:12px;border:1.5px solid var(–bg2);background:var(–bg);color:var(–ink);font-family:‘Tajawal’;font-size:0.88rem;outline:none;transition:border 0.2s}
+.ae-f input:focus{border-color:var(–accent)}
+.ae-lb{display:block;font-size:0.78rem;font-weight:700;color:var(–ink2);margin-top:4px;margin-bottom:-4px;padding-right:2px}
+.ae-lb-sm{display:block;font-size:0.7rem;font-weight:600;color:var(–ink3);margin-bottom:-4px;padding-right:2px}
+.cal-tabs{display:flex;gap:6px;background:var(–bg);border-radius:12px;padding:4px}
+.cal-tab{flex:1;padding:8px 12px;border:none;border-radius:8px;background:transparent;color:var(–ink2);font-family:‘Tajawal’;font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.2s}
+.cal-tab.on{background:var(–accent);color:#fff;box-shadow:0 2px 8px rgba(167,139,250,0.25)}
+.cal-box{display:flex;flex-direction:column;gap:6px}
+.hij-row{display:flex;gap:6px}
+.hij-row select{flex:1;padding:10px 12px;border-radius:10px;border:1.5px solid var(–bg2);background:var(–bg);color:var(–ink);font-family:‘Tajawal’;font-size:0.85rem;font-weight:600;outline:none;cursor:pointer;-webkit-appearance:none;appearance:none;text-align:center;text-align-last:center;background-image:url(“data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23a78bfa' stroke-width='1.5' fill='none'/></svg>”);background-repeat:no-repeat;background-position:left 10px center;padding-left:24px}
+.hij-row select:focus{border-color:var(–accent)}
+.hij-conv{font-size:0.76rem;color:var(–accent);background:var(–accent-bg);border:1px dashed var(–accent-border);padding:8px 12px;border-radius:10px;text-align:center;margin-top:8px;font-weight:600}
+.ae-row{display:flex;gap:10px}
+.ae-row input{flex:1}
+.ae-sub{padding:10px 24px;border:none;border-radius:12px;background:var(–accent);color:#fff;font-family:‘Tajawal’;font-size:0.88rem;font-weight:700;cursor:pointer;transition:all 0.2s}
+.ae-sub:hover{box-shadow:0 4px 16px rgba(80,70,229,0.25);transform:translateY(-1px)}
+.ae-note{text-align:center;font-size:0.72rem;color:var(–ink3);padding:8px 4px 0;cursor:pointer;transition:color 0.2s;line-height:1.8}
+.ae-note:hover{color:var(–accent)}
+.ae-more{color:var(–accent);font-weight:700;text-decoration:underline}
+.ae-info{display:none;background:var(–accent-bg);border:1px solid var(–accent-border);border-radius:12px;padding:16px;margin-top:8px;font-size:0.78rem;line-height:1.8;color:var(–ink2);animation:fadeIn 0.3s ease}
+.ae-info.show{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.ae-info h4{font-size:0.88rem;color:var(–ink);margin-bottom:8px;font-weight:800}
+.ae-info p{margin-bottom:6px}
+.ae-info ul{list-style:none;margin:6px 0 10px;padding:0}
+.ae-info ul li{padding:3px 0;font-size:0.76rem;color:var(–ink2)}
+.ae-info strong{color:var(–ink)}
+.ae-tip{background:var(–card);padding:8px 12px;border-radius:8px;margin-top:8px;font-size:0.74rem;color:var(–ink2)}
 
-/ CARD /
-.cd{
-  background:var(--card);
-  padding:18px;
-  border-radius:14px;
-  text-align:center;
-}
+/* ══════ GRID ══════ */
+.grd{display:grid;grid-template-columns:1fr;gap:14px;padding:0 14px 24px}
 
-.cd h2{
-  font-size:1.4rem;
-  margin-bottom:6px;
-}
-.cd p{
-  font-size:.85rem;
-  color:var(--ink2);
-  margin-bottom:12px;
-}
+/* ══════ CARDS ══════ */
+.cd{background:var(–card);border:none;border-radius:var(–r);padding:24px 24px 20px;position:relative;overflow:hidden;transition:all 0.35s;cursor:default;animation:cIn 0.5s ease backwards;box-shadow:0 1px 3px rgba(0,0,0,0.2)}
+.cd:nth-child(1){animation-delay:.04s}.cd:nth-child(2){animation-delay:.08s}.cd:nth-child(3){animation-delay:.12s}.cd:nth-child(4){animation-delay:.16s}.cd:nth-child(5){animation-delay:.2s}.cd:nth-child(6){animation-delay:.24s}
+@keyframes cIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.cd:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.25)}
+.cd::before{display:none}
 
-/ COUNTDOWN /
-.ct{
-  display:flex;
-  justify-content:center;
-  gap:6px;
-  direction:ltr;
-}
-.cu{
-  background:#0003;
-  padding:10px;
-  border-radius:10px;
-  min-width:55px;
-}
-.cn{
-  font-size:1.5rem;
-  font-weight:900;
-}
-.cl{
-  font-size:.7rem;
-  opacity:.7;
-}
+/* Card header: icon + category inline */
+.cd-top{display:flex;align-items:center;gap:12px;margin-bottom:12px;justify-content:center}
+.cd-ic{font-size:2rem;line-height:1}
+.cd-cat{font-size:0.78rem;font-weight:800;letter-spacing:0;color:var(–accent)!important;-webkit-text-fill-color:var(–accent)!important;background:rgba(167,139,250,0.08);padding:4px 14px;border-radius:20px;line-height:1.8;border:1px solid rgba(167,139,250,0.15)}
 
-/ BUTTON /
-.share{
-  margin-top:12px;
-  background:var(--accent);
-  border:none;
-  padding:8px 18px;
-  border-radius:10px;
-  color:#fff;
-  cursor:pointer;
-}
+/* Title + date */
+.cd-tt{font-size:1.55rem;font-weight:800;margin-bottom:4px;line-height:1.6;color:var(–ink);text-align:center}
+.cd-dt{font-weight:500;font-size:0.92rem;color:var(–ink3);margin-bottom:18px;line-height:1.7;text-align:center}
 
+/* Countdown */
+.ct{display:flex;align-items:center;justify-content:center;gap:6px;direction:ltr;margin-bottom:14px}
+.cu{text-align:center;min-width:56px;background:rgba(167,139,250,0.06);border:none;border-radius:12px;padding:12px 6px;transition:all 0.3s}
+.cd:hover .cu{background:rgba(167,139,250,0.1);transform:translateY(-1px)}
+.cn{font-size:1.75rem;font-weight:900;line-height:1;font-variant-numeric:tabular-nums;color:var(–ink)!important;-webkit-text-fill-color:var(–ink)!important;transition:color 0.3s}
+.cd:hover .cn{color:var(–accent)!important;-webkit-text-fill-color:var(–accent)!important}
+.cl{font-size:0.68rem;color:var(–ink2)!important;-webkit-text-fill-color:var(–ink2)!important;font-weight:600;margin-top:6px;line-height:1.5}
+.cs{color:var(–accent)!important;-webkit-text-fill-color:var(–accent)!important;font-size:1rem;font-weight:700;opacity:0.5;align-self:flex-start;margin-top:10px;animation:bk 2s ease infinite}
+@keyframes bk{0%,100%{opacity:.5}50%{opacity:.15}}
+
+/* Actions - compact single row */
+.cd-ac{display:flex;flex-wrap:wrap;gap:6px;padding-top:12px;border-top:1px solid var(–bg2);justify-content:center}
+.ab{display:inline-flex;align-items:center;gap:4px;background:var(–bg);border:1px solid var(–bg2);color:var(–ink3);padding:6px 14px;border-radius:8px;font-family:‘Tajawal’;font-size:0.74rem;font-weight:700;cursor:pointer;transition:all 0.2s;text-decoration:none}
+.ab:hover{border-color:var(–accent);color:var(–accent);background:var(–accent-bg)}
+.ab.share-btn{background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;border:none;padding:8px 18px;font-size:0.8rem;box-shadow:0 2px 10px rgba(139,92,246,0.3)}
+.ab.share-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(139,92,246,0.45);background:linear-gradient(135deg,#9d6bff,#7c7ff5)}
+
+/* Badges */
+.b-live::before{content:’’;width:6px;height:6px;background:var(–green);border-radius:50%;animation:pp 1.5s infinite}
+@keyframes pp{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+.cd.nr{box-shadow:0 2px 12px rgba(167,139,250,0.1)}
+.b-nr{position:absolute;top:14px;left:14px;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff!important;-webkit-text-fill-color:#fff!important;font-size:0.7rem;font-weight:800;padding:5px 14px;border-radius:50px;line-height:1.6;box-shadow:0 3px 12px rgba(167,139,250,0.5);white-space:nowrap}
+.b-live{position:absolute;top:14px;left:14px;background:rgba(52,211,153,0.18);color:var(–green)!important;-webkit-text-fill-color:var(–green)!important;font-size:0.68rem;font-weight:800;padding:4px 12px;border-radius:50px;display:flex;align-items:center;gap:5px;line-height:1.6;border:1.5px solid rgba(52,211,153,0.4);white-space:nowrap}
+.b-cu{position:absolute;top:14px;left:50px;background:var(–blue-bg);color:var(–blue)!important;-webkit-text-fill-color:var(–blue)!important;font-size:0.64rem;font-weight:700;padding:3px 8px;border-radius:50px;white-space:nowrap}
+.del-cu{position:absolute;top:14px;left:14px;background:var(–rose-bg);border:none;color:var(–rose);width:24px;height:24px;border-radius:50%;font-size:0.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s}
+.cd:hover .del-cu{opacity:0.7}
+.del-cu:hover{opacity:1!important}
+
+/* Force link colors to not use default blue - CRITICAL for iOS Safari */
+.adi,.dlc,.prc,.fsp-a,.spn-a,.app-sb,.wa-bt,.adi-cta,.dls-tg,.prm-a{color:var(–ink)!important;text-decoration:none!important;-webkit-text-fill-color:var(–ink)!important}
+.adi *,.dlc *,.prc *,.fsp-a *,.app-sb *,.spn-a *{color:inherit!important;-webkit-text-fill-color:inherit!important}
+.adi-c h3,.dlc-nm,.prc-nm,.app-tx h3,.wa-tx h3{color:var(–ink)!important;-webkit-text-fill-color:var(–ink)!important}
+.adi-c p,.app-tx p,.wa-tx p,.prc-nm + *{color:var(–ink2)!important;-webkit-text-fill-color:var(–ink2)!important}
+
+/* ══════ AD BANNER ══════ */
+.adb{padding:0 14px 20px;position:relative}
+.adi{background:var(–card);border:1px solid rgba(0,0,0,0.06);border-radius:var(–r);padding:20px 24px;display:flex;align-items:center;gap:18px;transition:all 0.3s;text-decoration:none;color:var(–ink);position:relative;overflow:hidden}
+.adi::before{content:’’;position:absolute;inset:0;background:linear-gradient(135deg,var(–accent-bg),transparent 60%);pointer-events:none}
+.adi:hover{border-color:var(–accent-border);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.05)}
+.adi-ic{font-size:1.6rem;flex-shrink:0}
+.adi-c{flex:1}.adi-c h3{font-size:0.9rem;font-weight:800;margin-bottom:1px;color:var(–ink)}
+.adi-c p{font-size:0.75rem;color:var(–ink2);font-weight:400}
+.adi-cta{background:var(–accent);color:#fff;padding:7px 16px;border-radius:50px;font-family:‘Tajawal’;font-size:0.75rem;font-weight:700;white-space:nowrap;flex-shrink:0;cursor:pointer}
+.adi-tag{position:absolute;top:8px;left:24px;font-size:0.58rem;color:var(–ink3);opacity:0.4;letter-spacing:0;font-weight:700}
+
+/* ══════ DEALS ══════ */
+.dls{padding:0 14px 24px}
+.dls-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.dls-t{font-size:1rem;font-weight:700;display:flex;align-items:center;gap:6px}
+.dls-tg{font-size:0.58rem;color:var(–ink3);opacity:0.4;letter-spacing:0;font-weight:700}
+.dls-sc{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.dls-sc::-webkit-scrollbar{display:none}
+.dlc{min-width:190px;max-width:190px;background:var(–card);border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:16px;flex-shrink:0;transition:all 0.3s;text-decoration:none;color:var(–ink);display:flex;flex-direction:column}
+.dlc:hover{border-color:var(–accent-border);transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.05)}
+.dlc-em{font-size:1.5rem;margin-bottom:6px}
+.dlc-st{font-size:0.6rem;color:var(–green);font-weight:700;letter-spacing:0.8px;margin-bottom:2px}
+.dlc-nm{font-size:0.82rem;font-weight:800;margin-bottom:3px;line-height:1.4;color:var(–ink)}
+.dlc-ds{font-size:0.7rem;color:var(–ink3);font-weight:400;margin-bottom:8px;line-height:1.5;flex:1}
+.dlc-bd{display:inline-block;background:var(–rose-bg);color:var(–rose);font-size:0.64rem;font-weight:700;padding:2px 7px;border-radius:5px;align-self:flex-start}
+
+/* ══════ PREMIUM ══════ */
+.prm{padding:0 14px 24px}
+.prm-h{margin-bottom:14px}.prm-t{font-size:1rem;font-weight:700;display:flex;align-items:center;gap:6px}
+.prm-sc{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none}
+.prm-sc::-webkit-scrollbar{display:none}
+.prc{min-width:160px;max-width:160px;background:var(–card);border:1px solid rgba(0,0,0,0.06);border-radius:14px;overflow:hidden;flex-shrink:0;transition:all 0.3s;cursor:pointer;text-decoration:none;color:var(–ink)}
+.prc:hover{border-color:var(–accent-border);transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.05)}
+.prc-pv{height:85px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;position:relative}
+.prc-pv::after{content:’’;position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,var(–card))}
+.prc-in{padding:10px 12px}
+.prc-nm{font-size:0.76rem;font-weight:800;margin-bottom:3px;color:var(–ink)}
+.prc-pr{display:flex;align-items:center;justify-content:space-between}
+.prc-am{font-size:0.72rem;color:var(–accent);font-weight:700}
+.prc-fr{font-size:0.64rem;color:var(–green);font-weight:700}
+.prc-by{font-size:0.62rem;background:var(–accent-bg);color:var(–accent);padding:2px 8px;border-radius:5px;font-weight:700}
+
+/* ══════ WHATSAPP CTA ══════ */
+.wa-sec{padding:0 14px 20px}
+.wa-in{background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.2);border-radius:var(–r);padding:24px;display:flex;align-items:center;gap:18px;color:var(–ink)}
+.wa-ic{font-size:2rem;flex-shrink:0}
+.wa-tx{flex:1}
+.wa-tx h3{font-size:0.95rem;font-weight:700;margin-bottom:3px;color:var(–ink)}
+.wa-tx p{font-size:0.78rem;color:var(–ink2);font-weight:400;margin-bottom:12px;line-height:1.6}
+.wa-bt{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#128C7E,#25D366);color:#fff;padding:10px 24px;border-radius:12px;font-family:‘Tajawal’;font-size:0.88rem;font-weight:700;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 14px rgba(37,211,102,0.18)}
+.wa-bt:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,211,102,0.25)}
+.wa-nt{font-size:0.62rem;color:var(–ink2);margin-top:6px;font-weight:500}
+
+/* ══════ APP BANNER ══════ */
+.app{padding:0 14px 24px}
+.app-in{background:rgba(129,140,248,0.08);border:1px solid rgba(129,140,248,0.2);border-radius:var(–r);padding:22px;display:flex;align-items:center;gap:16px;color:var(–ink)}
+.app-mk{font-size:2rem;flex-shrink:0;background:var(–card);width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(129,140,248,0.3)}
+.app-tx{flex:1}.app-tx h3{font-size:0.95rem;font-weight:700;margin-bottom:2px;color:var(–ink)}
+.app-tx p{font-size:0.76rem;color:var(–ink2);font-weight:400}
+.app-bs{display:flex;gap:6px;flex-shrink:0;flex-wrap:wrap;justify-content:center}
+.app-sb{padding:8px 14px;border-radius:10px;background:var(–card);border:1px solid var(–accent-border);color:var(–ink);font-family:‘Tajawal’;font-size:0.72rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:all 0.2s}
+.app-sb:hover{border-color:var(–blue);color:var(–blue)}
+
+/* ══════ FOOTER ══════ */
+.fsp{padding:28px 14px}
+.fsp-t{text-align:center;font-size:0.78rem;color:var(–ink2);letter-spacing:0;font-weight:700;margin-bottom:16px}
+.fsp-g{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
+.fsp-a{display:flex;align-items:center;gap:6px;background:var(–card);border:1px solid var(–bg2);padding:8px 14px;border-radius:10px;text-decoration:none;color:var(–ink2);font-size:0.78rem;font-weight:700;transition:all 0.2s}
+.fsp-a:hover{border-color:var(–accent-border);color:var(–accent);transform:translateY(-1px)}
+.ftr{text-align:center;padding:20px 14px 18px;color:var(–ink3);font-size:0.76rem;font-weight:400;border-top:1px solid var(–bg2);background:var(–card)}
+.views{display:inline-flex;align-items:center;gap:6px;background:var(–accent-bg);color:var(–accent);padding:6px 16px;border-radius:50px;font-size:0.82rem;font-weight:700;margin-bottom:10px;border:1px solid var(–accent-border)}
+.views strong{font-size:1rem;font-variant-numeric:tabular-nums}
+.views-lb{font-weight:500;opacity:0.85;font-size:0.76rem}
+.ftr-t{font-size:0.72rem;color:var(–ink3);opacity:0.8}
+
+/* ══════ MODAL ══════ */
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);z-index:100;align-items:center;justify-content:center;padding:20px}
+.mo.on{display:flex}
+.ml{background:var(–card);border:1px solid var(–bg2);border-radius:var(–r);max-width:520px;width:100%;max-height:80vh;overflow-y:auto;padding:30px;position:relative;animation:mIn 0.3s ease;box-shadow:0 20px 60px rgba(0,0,0,0.12)}
+@keyframes mIn{from{opacity:0;transform:scale(.96) translateY(16px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.ml-x{position:absolute;top:12px;left:12px;background:var(–bg);border:1px solid var(–bg2);color:var(–ink3);width:30px;height:30px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.ml-x:hover{background:var(–rose-bg);color:var(–rose);border-color:var(–rose)}
+.ml-ic{font-size:2.2rem;margin-bottom:12px}
+.ml-tt{font-size:1.2rem;font-weight:700;margin-bottom:4px}
+.ml-ds{color:var(–ink2);font-weight:400;font-size:0.85rem;margin-bottom:18px;line-height:1.7}
+.ml-ct{background:var(–bg);border:1px solid var(–bg2);border-radius:14px;padding:18px;margin-bottom:16px;font-size:0.9rem;line-height:2;white-space:pre-line;text-align:right;color:var(–ink)}
+.ml-ac{display:flex;gap:8px;flex-wrap:wrap}
+.ml-b{display:inline-flex;align-items:center;gap:5px;padding:9px 18px;border-radius:10px;font-family:‘Tajawal’;font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.2s;border:none}
+.ml-b1{background:var(–accent);color:#fff}
+.ml-b1:hover{box-shadow:0 4px 14px rgba(167,139,250,0.35)}
+.ml-b2{background:var(–bg);color:var(–ink2);border:1px solid var(–bg2)}
+.ml-b2:hover{border-color:var(–green);color:var(–green)}
+
+/* Notification FAB */
+.nf{position:fixed;bottom:20px;left:20px;z-index:50;width:44px;height:44px;border-radius:50%;background:var(–accent);color:#fff;border:none;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(167,139,250,0.35);transition:all 0.3s}
+.nf:hover{transform:scale(1.1)}
+@keyframes nfp{0%,100%{box-shadow:0 6px 24px rgba(167,139,250,0.35)}50%{box-shadow:0 6px 24px rgba(167,139,250,0.5),0 0 0 8px rgba(167,139,250,0.15)}}
+.nf.done{background:var(–green);animation:none}
+
+/* ══════ RESPONSIVE ══════ */
+/* Mobile styles always applied (body is 480px max) */
+.cd{padding:20px}
+.adi,.wa-in,.app-in{flex-direction:column;text-align:center;gap:12px;padding:18px}
+.wa-ic{display:none}
+.app-bs{justify-content:center}
+.ae-row{flex-direction:column}
+.dlc{min-width:170px;max-width:170px}
+.prc{min-width:145px;max-width:145px}
+.cd.hid{display:none}
 </style>
-</head>
 
+</head>
 <body>
 
-<header class="hdr">
-  <h1>كم باقي؟</h1>
-  <p>العد التنازلي للمناسبات</p>
-</header>
+<div class="spn"><div class="spn-in">
+  <a href="https://wa.me/966570650004" target="_blank" class="spn-a spn-cta">📢 للإعلان معنا</a>
+  <a href="https://mufa-sa.com" target="_blank" class="spn-a">📦 منصة الشحن المخفض — سمسا وأرامكس بـ ٢٥ ريال</a>
+</div></div>
+
+<header class="hdr"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><h1>كم باقي ؟</h1><p>العد التنازلي المباشر لأهم المناسبات</p></header>
 
 <nav class="flt">
   <button class="fb on" data-f="all">الكل</button>
   <button class="fb" data-f="دينية">دينية</button>
   <button class="fb" data-f="وطنية">وطنية</button>
   <button class="fb" data-f="مالية">مالية</button>
+  <button class="fb" data-f="دراسية">🎓 دراسية</button>
+  <button class="fb" data-f="رياضية">رياضية</button>
+  <button class="fb" data-f="عروض">عروض</button>
+  <button class="fb" data-f="خاصة">⭐ مواعيدي</button>
 </nav>
 
-<main class="grd" id="app"></main>
+<div class="ae-bar">
+  <button class="ae-btn" id="aeToggle" onclick="document.getElementById('aeForm').classList.toggle('show')">➕ أضف موعدك الخاص</button>
+  <div class="ae-f" id="aeForm">
+    <label class="ae-lb">✏️ اسم الموعد</label>
+    <input type="text" id="ceT" placeholder="مثال: يوم زواج أحمد">
+
+```
+<label class="ae-lb">📅 اختر نوع التقويم</label>
+<div class="cal-tabs">
+  <button type="button" class="cal-tab on" data-cal="g" onclick="switchCal('g')">🗓️ ميلادي</button>
+  <button type="button" class="cal-tab" data-cal="h" onclick="switchCal('h')">📿 هجري</button>
+</div>
+
+<!-- Gregorian -->
+<div class="cal-box" id="calG">
+  <label class="ae-lb-sm">التاريخ الميلادي</label>
+  <div class="hij-row">
+    <select id="grgD"></select>
+    <select id="grgM">
+      <option value="1">يناير</option><option value="2">فبراير</option>
+      <option value="3">مارس</option><option value="4">أبريل</option>
+      <option value="5">مايو</option><option value="6">يونيو</option>
+      <option value="7">يوليو</option><option value="8">أغسطس</option>
+      <option value="9">سبتمبر</option><option value="10">أكتوبر</option>
+      <option value="11">نوفمبر</option><option value="12">ديسمبر</option>
+    </select>
+    <select id="grgY"></select>
+  </div>
+  <label class="ae-lb-sm" style="margin-top:8px">الوقت (اختياري)</label>
+  <input type="time" id="grgT" value="00:00">
+  <div class="hij-conv" id="grgConv">— سيظهر ما يقابله بالهجري —</div>
+</div>
+
+<!-- Hijri -->
+<div class="cal-box" id="calH" style="display:none">
+  <label class="ae-lb-sm">التاريخ الهجري</label>
+  <div class="hij-row">
+    <select id="hijD"></select>
+    <select id="hijM">
+      <option value="1">محرم</option><option value="2">صفر</option>
+      <option value="3">ربيع الأول</option><option value="4">ربيع الآخر</option>
+      <option value="5">جمادى الأولى</option><option value="6">جمادى الآخرة</option>
+      <option value="7">رجب</option><option value="8">شعبان</option>
+      <option value="9">رمضان</option><option value="10">شوال</option>
+      <option value="11">ذو القعدة</option><option value="12">ذو الحجة</option>
+    </select>
+    <select id="hijY"></select>
+  </div>
+  <label class="ae-lb-sm" style="margin-top:8px">الوقت (اختياري)</label>
+  <input type="time" id="hijT" value="00:00">
+  <div class="hij-conv" id="hijConv">— سيظهر ما يقابله بالميلادي —</div>
+</div>
+
+<label class="ae-lb">✨ إيموجي (اختياري)</label>
+<input type="text" id="ceI" placeholder="🎂" maxlength="4" style="text-align:center;max-width:100px">
+
+<button class="ae-sub" onclick="addCE()">✅ أضف الموعد</button>
+<div class="ae-note" onclick="document.getElementById('storeInfo').classList.toggle('show')">💾 مواعيدك محفوظة في هذا المتصفح فقط <span class="ae-more">— المزيد</span></div>
+<div class="ae-info" id="storeInfo">
+  <h4>📌 كيف تُحفظ مواعيدك؟</h4>
+  <p>مواعيدك الخاصة تُحفظ تلقائيًا في هذا المتصفح، وتبقى حتى لو:</p>
+  <ul>
+    <li>✅ أغلقت الصفحة أو التبويب</li>
+    <li>✅ أعدت تشغيل الجهاز</li>
+    <li>✅ مرّت أيام أو أشهر دون فتح الموقع</li>
+  </ul>
+  <p><strong>لكن تضيع إذا:</strong></p>
+  <ul>
+    <li>❌ مسحت بيانات التصفح / الكوكيز</li>
+    <li>❌ فتحت الموقع من جهاز أو متصفح آخر</li>
+    <li>❌ استخدمت الوضع الخاص (Private)</li>
+  </ul>
+  <p class="ae-tip">💡 نصيحة: خذ لقطة شاشة لمواعيدك المهمة.</p>
+</div>
+```
+
+  </div>
+</div>
+</div>
+
+<main class="grd" id="g1"></main>
+
+<div class="adb" id="ad1"><span class="adi-tag">إعلان</span><a href="https://www.noon.com" target="_blank" class="adi"><span class="adi-ic">🛒</span><div class="adi-c"><h3>كود خصم نون: ACC9 — وفّر حتى ١٠٪</h3><p>خصم فوري + كاش باك للعملاء الجدد على الإلكترونيات والأزياء</p></div><span class="adi-cta" onclick="event.preventDefault();navigator.clipboard.writeText('ACC9');this.textContent='✅ تم!'">📋 انسخ الكود</span></a></div>
+
+<section class="dls" id="dlsSec"><div class="dls-h"><h2 class="dls-t">🔥 عروض المناسبة</h2><span class="dls-tg">روابط تسويقية</span></div><div class="dls-sc">
+  <a href="https://www.noon.com/saudi-ar/electronics/" target="_blank" class="dlc"><span class="dlc-em">📱</span><span class="dlc-st">نون</span><h3 class="dlc-nm">إلكترونيات وجوالات</h3><p class="dlc-ds">كود ACC9 لخصم إضافي</p><span class="dlc-bd">حتى ٣٥٪</span></a>
+  <a href="https://www.amazon.sa/deals" target="_blank" class="dlc"><span class="dlc-em">🎁</span><span class="dlc-st">أمازون</span><h3 class="dlc-nm">عروض اليوم</h3><p class="dlc-ds">صفقات يومية محدودة</p><span class="dlc-bd">حتى ٦٠٪</span></a>
+  <a href="https://www.jarir.com" target="_blank" class="dlc"><span class="dlc-em">💻</span><span class="dlc-st">جرير</span><h3 class="dlc-nm">لابتوبات وشاشات</h3><p class="dlc-ds">أجهزة بأقل الأسعار</p><span class="dlc-bd">عروض خاصة</span></a>
+  <a href="https://www.saadeddin.com" target="_blank" class="dlc"><span class="dlc-em">🍫</span><span class="dlc-st">سعد الدين</span><h3 class="dlc-nm">حلويات وشوكولاتة</h3><p class="dlc-ds">بوكسات فاخرة للضيوف</p><span class="dlc-bd">توصيل مجاني</span></a>
+  <a href="https://www.almosafer.com" target="_blank" class="dlc"><span class="dlc-em">✈️</span><span class="dlc-st">المسافر</span><h3 class="dlc-nm">حجز طيران + فندق</h3><p class="dlc-ds">باقات سفر لإجازة العيد</p><span class="dlc-bd">وفّر ٣٥٪</span></a>
+</div></section>
+
+<div class="grd" id="g2"></div>
+
+<div class="adb" id="ad2"><span class="adi-tag">إعلان</span><a href="https://www.amazon.sa" target="_blank" class="adi"><span class="adi-ic">🛍️</span><div class="adi-c"><h3>أمازون السعودية — عروض يومية حتى ٦٠٪</h3><p>شحن مجاني للطلبات فوق ١٠٠ ريال مع Prime</p></div><span class="adi-cta">تسوّق الآن ←</span></a></div>
+
+<section class="prm"><div class="prm-h"><h2 class="prm-t">🎨 تصاميم وبطاقات</h2></div><div class="prm-sc">
+  <a href="#" class="prc"><div class="prc-pv" style="background:linear-gradient(135deg,#e8e4f0,#d4c8e8)">🌙</div><div class="prc-in"><h3 class="prc-nm">بطاقة رمضان كريم</h3><div class="prc-pr"><span class="prc-fr">مجانية</span><span class="prc-by">تحميل</span></div></div></a>
+  <a href="#" class="prc"><div class="prc-pv" style="background:linear-gradient(135deg,#e0f0e4,#c0e0c8)">🐑</div><div class="prc-in"><h3 class="prc-nm">بطاقة عيد الأضحى</h3><div class="prc-pr"><span class="prc-fr">مجانية</span><span class="prc-by">تحميل</span></div></div></a>
+  <a href="#" class="prc"><div class="prc-pv" style="background:linear-gradient(135deg,#f0e4e4,#e8d0d0)">🎉</div><div class="prc-in"><h3 class="prc-nm">بوكس تهاني الفطر</h3><div class="prc-pr"><span class="prc-am">٩.٩٩ ر.س</span><span class="prc-by">شراء</span></div></div></a>
+  <a href="#" class="prc"><div class="prc-pv" style="background:linear-gradient(135deg,#e0ece8,#c8e0d8)">🇸🇦</div><div class="prc-in"><h3 class="prc-nm">بوكس اليوم الوطني</h3><div class="prc-pr"><span class="prc-am">١٤.٩٩ ر.س</span><span class="prc-by">شراء</span></div></div></a>
+</div></section>
+
+<section class="wa-sec"><div class="wa-in"><div class="wa-ic">💬</div><div class="wa-tx"><h3>بوت "كم باقي؟" على واتساب 🤖</h3><p>أرسل اسم أي مناسبة ويرد عليك فورًا بالعد التنازلي + دعاء أو تهنئة — يذكّرك تلقائيًا!</p><a href="https://wa.me/966500000000?text=كم%20باقي%20على%20رمضان؟" target="_blank" class="wa-bt">💬 ابدأ محادثة واتساب</a><p class="wa-nt">✅ مجاني • ذكاء اصطناعي • بدون تحميل</p></div></div></section>
+
+<div class="app"><div class="app-in"><div class="app-mk">📱</div><div class="app-tx"><h3>حمّل تطبيق "كم باقي؟"</h3><p>تذكيرات ذكية • ويدجت للشاشة الرئيسية</p></div><div class="app-bs"><a href="#" class="app-sb"> App Store</a><a href="#" class="app-sb">▶ Google Play</a></div></div></div>
+
+<section class="fsp"><div class="fsp-t">بدعم ورعاية</div><div class="fsp-g">
+  <a href="https://www.noon.com" target="_blank" class="fsp-a"><span>🛒</span>نون</a>
+  <a href="https://www.amazon.sa" target="_blank" class="fsp-a"><span>🛍️</span>أمازون</a>
+  <a href="https://www.saadeddin.com" target="_blank" class="fsp-a"><span>🍫</span>سعد الدين</a>
+  <a href="https://www.stc.com.sa" target="_blank" class="fsp-a"><span>📱</span>stc</a>
+  <a href="https://www.jarir.com" target="_blank" class="fsp-a"><span>🏪</span>جرير</a>
+  <a href="https://www.almosafer.com" target="_blank" class="fsp-a"><span>✈️</span>المسافر</a>
+  <a href="https://www.saudia.com" target="_blank" class="fsp-a"><span>🛩️</span>السعودية</a>
+</div></section>
+
+<footer class="ftr">
+  <div class="views"><span>👁</span> <strong id="viewCount">—</strong> <span class="views-lb">زائر</span></div>
+  <div class="ftr-t">كم باقي؟ © 2026 — يُحدَّث تلقائيًا كل ثانية</div>
+</footer>
+
+<button class="nf" id="nfBtn" onclick="this.textContent='✅';this.classList.add('done')">🔔</button>
+
+<div class="mo" id="mo"><div class="ml"><button class="ml-x" onclick="document.getElementById('mo').classList.remove('on')">✕</button><div id="moB"></div></div></div>
 
 <script>
+const DL={
+'رمضان 1448':[{i:'🤲',l:'دعاء دخول رمضان',t:'dua',c:'اللَّهُمَّ أَهِلَّهُ عَلَيْنَا بِالْيُمْنِ وَالْإِيمَانِ\nوَالسَّلَامَةِ وَالْإِسْلَامِ\nرَبِّي وَرَبُّكَ اللَّهُ\n\nاللَّهُمَّ بَلِّغْنَا رَمَضَانَ وَبَارِكْ لَنَا فِيهِ'},{i:'🌙',l:'بطاقة تهنئة',t:'g',c:'مبارك عليكم شهر رمضان 🌙\n\nأسأل الله أن يبلّغنا وإياكم رمضان\nوأن يتقبّل منا ومنكم صالح الأعمال\n\nكل عام وأنتم بخير 🤍'}],
+'عيد الفطر 1447':[{i:'🤲',l:'تكبيرات العيد',t:'dua',c:'اللهُ أَكْبَرُ اللهُ أَكْبَرُ اللهُ أَكْبَرُ\nلَا إِلَهَ إِلَّا اللهُ\nاللهُ أَكْبَرُ اللهُ أَكْبَرُ وَلِلَّهِ الحَمْدُ'},{i:'🎉',l:'بطاقة تهنئة',t:'g',c:'عيدكم مبارك 🎉\nتقبّل الله منّا ومنكم صالح الأعمال\nكل عام وأنتم بخير 🤍'}],
+'يوم عرفة 1447':[{i:'🤲',l:'دعاء يوم عرفة',t:'dua',c:'لا إلهَ إلَّا اللهُ وحدَهُ لا شريكَ لهُ\nلهُ المُلكُ ولهُ الحمدُ\nوهوَ على كلِّ شيءٍ قديرٌ\n\nاللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ'}],
+'عيد الأضحى 1447':[{i:'🐑',l:'بطاقة تهنئة',t:'g',c:'عيد أضحى مبارك 🐑\nتقبّل الله طاعتكم\nكل عام وأنتم بخير 🤍'}],
+'اليوم الوطني السعودي':[{i:'🇸🇦',l:'بطاقة وطنية',t:'g',c:'🇸🇦 اليوم الوطني\nدام عزّك يا وطن\n💚 نحلم ونحقق 🤍'}],
+'يوم التأسيس':[{i:'🏴',l:'بطاقة يوم التأسيس',t:'g',c:'🏴 يوم التأسيس\nيوم بدينا 1727م\nدامت المملكة شامخة 💚'}]
+};
 
-const EVENTS=[
-{title:'رمضان 1448',date:'2027-02-08',cat:'دينية'},
-{title:'عيد الفطر',date:'2026-03-20',cat:'دينية'},
-{title:'عيد الأضحى',date:'2026-05-27',cat:'دينية'},
-{title:'اليوم الوطني',date:'2026-09-23',cat:'وطنية'},
-{title:'راتب الشهر',date:'2026-05-27',cat:'مالية'}
+function gSD(y,m){let d=new Date(y,m-1,27);const w=d.getDay();if(w===5)d.setDate(26);if(w===6)d.setDate(28);return d}
+function genSal(){const n=new Date(),e=[],ar=['','يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'],dy=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+let c=0,y=n.getFullYear(),m=n.getMonth()+1;
+while(c<3){const s=gSD(y,m);if(s>n){const ds=`${s.getFullYear()}-${String(s.getMonth()+1).padStart(2,'0')}-${String(s.getDate()).padStart(2,'0')}`;const nt=s.getDate()!==27?(s.getDate()===26?' (٢٧ جمعة)':' (٢٧ سبت)'):'';
+e.push({ic:'💰',tt:`نزول الراتب (${ar[s.getMonth()+1]})`,dt:ds,hj:`${dy[s.getDay()]} ${s.getDate()} ${ar[s.getMonth()+1]}${nt}`,cat:'مالية',ac:'#0d7a50'});c++}m++;if(m>12){m=1;y++}}return e}
+
+let CE=[];
+function ldCE(){try{const r=localStorage.getItem('custom-events');if(r)CE=JSON.parse(r)}catch(e){CE=[]}}
+function svCE(){try{localStorage.setItem('custom-events',JSON.stringify(CE))}catch(e){}}
+function addCE(){
+  const t=document.getElementById('ceT').value.trim();
+  const ic=document.getElementById('ceI').value.trim()||'📌';
+  if(!t)return;
+  
+  let dtStr='',displayDate='';
+  const dy=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+  const mo=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  const hMo=['','محرم','صفر','ربيع الأول','ربيع الآخر','جمادى الأولى','جمادى الآخرة','رجب','شعبان','رمضان','شوال','ذو القعدة','ذو الحجة'];
+  const pad=(n)=>String(n).padStart(2,'0');
+  
+  if(currentCal==='g'){
+    const gd=parseInt(document.getElementById('grgD').value);
+    const gm=parseInt(document.getElementById('grgM').value);
+    const gy=parseInt(document.getElementById('grgY').value);
+    const gt=document.getElementById('grgT').value||'00:00';
+    const [gh,gmn]=gt.split(':').map(Number);
+    const dt=new Date(gy,gm-1,gd,gh,gmn);
+    dtStr=`${gy}-${pad(gm)}-${pad(gd)}T${pad(gh)}:${pad(gmn)}`;
+    const h=gToH(dt);
+    const hijPart=h?`<br>📿 ${h.d} ${hMo[h.m]} ${h.y}هـ`:'';
+    displayDate=`${dy[dt.getDay()]} ${gd} ${mo[gm-1]} ${gy} — ${pad(gh)}:${pad(gmn)}${hijPart}`;
+  }else{
+    const hd=parseInt(document.getElementById('hijD').value);
+    const hm=parseInt(document.getElementById('hijM').value);
+    const hy=parseInt(document.getElementById('hijY').value);
+    const ht=document.getElementById('hijT').value||'00:00';
+    const [hh,mn]=ht.split(':').map(Number);
+    const g=hToG(hy,hm,hd,hh,mn);
+    if(!g){alert('⚠️ تعذّر تحويل التاريخ الهجري');return}
+    dtStr=`${g.getFullYear()}-${pad(g.getMonth()+1)}-${pad(g.getDate())}T${pad(g.getHours())}:${pad(g.getMinutes())}`;
+    displayDate=`📿 ${hd} ${hMo[hm]} ${hy}هـ — ${pad(g.getHours())}:${pad(g.getMinutes())}<br>🗓️ ${dy[g.getDay()]} ${g.getDate()} ${mo[g.getMonth()]} ${g.getFullYear()}`;
+  }
+  
+  CE.push({ic,tt:t,dt:dtStr,hj:displayDate,cat:'خاصة',ac:'#2548c2',cu:true,id:Date.now()});
+  svCE();render();
+  document.getElementById('ceT').value='';document.getElementById('ceD').value='';document.getElementById('ceI').value='';
+  document.getElementById('aeForm').classList.remove('show');
+  const b=document.getElementById('aeToggle');b.textContent='✅ تمت الإضافة!';b.style.color='var(--green)';b.style.borderColor='var(--green)';
+  setTimeout(()=>{b.textContent='➕ أضف موعدك الخاص';b.style.color='';b.style.borderColor=''},2000);
+}
+function delCE(id){CE=CE.filter(e=>e.id!==id);svCE();render()}
+
+const FE=[
+  {ic:'🌙',tt:'رمضان 1448',dt:'2027-02-08',hj:'١ رمضان ١٤٤٨',cat:'دينية',ac:'#7c5e14'},
+  {ic:'🕌',tt:'عيد الفطر 1447',dt:'2026-03-20',hj:'١ شوال ١٤٤٧',cat:'دينية',ac:'#0d7a50'},
+  {ic:'🕋',tt:'يوم عرفة 1447',dt:'2026-05-26',hj:'٩ ذو الحجة ١٤٤٧',cat:'دينية',ac:'#b85a08'},
+  {ic:'🐑',tt:'عيد الأضحى 1447',dt:'2026-05-27',hj:'١٠ ذو الحجة ١٤٤٧',cat:'دينية',ac:'#7c5e14'},
+  {ic:'📅',tt:'رأس السنة الهجرية 1448',dt:'2026-06-16',hj:'١ محرم ١٤٤٨',cat:'دينية',ac:'#2548c2'},
+  {ic:'🇸🇦',tt:'اليوم الوطني السعودي',dt:'2026-09-23',hj:'٢٣ سبتمبر',cat:'وطنية',ac:'#0d7a50'},
+  {ic:'🏴',tt:'يوم التأسيس',dt:'2027-02-22',hj:'٢٢ فبراير',cat:'وطنية',ac:'#2548c2'},
+  {ic:'💸',tt:'حساب المواطن (أبريل)',dt:'2026-04-10',hj:'١٠ أبريل',cat:'مالية',ac:'#b85a08'},
+  {ic:'🏷️',tt:'الجمعة البيضاء 2026',dt:'2026-11-27',hj:'٢٧ نوفمبر',cat:'عروض',ac:'#b8184e'},
+  {ic:'⚽',tt:'كأس العالم 2026',dt:'2026-06-11',hj:'١١ يونيو',cat:'رياضية',ac:'#b85a08'},
+  {ic:'🏖️',tt:'إجازة عيد الفطر (مدارس)',dt:'2026-03-06',hj:'١٧ رمضان — حتى ٢٨ مارس',cat:'دراسية',ac:'#0d7a50'},
+  {ic:'🏖️',tt:'إجازة عيد الأضحى (مدارس)',dt:'2026-05-22',hj:'٥ ذو الحجة — حتى ١ يونيو',cat:'دراسية',ac:'#0d7a50'},
+  {ic:'📝',tt:'اختبارات نهاية العام',dt:'2026-06-06',hj:'١١ ذو القعدة — حتى ١٧ يونيو',cat:'دراسية',ac:'#b8184e'},
+  {ic:'🎓',tt:'بداية إجازة الصيف',dt:'2026-06-25',hj:'١٠ محرم ١٤٤٨',cat:'دراسية',ac:'#b8184e'},
+  {ic:'🎒',tt:'بداية العام الدراسي ١٤٤٨',dt:'2026-08-23',hj:'١٠ ربيع الأول ١٤٤٨',cat:'دراسية',ac:'#2548c2'},
+  {ic:'🍂',tt:'إجازة الخريف ١٤٤٨',dt:'2026-11-20',hj:'٢٠–٢٨ نوفمبر',cat:'دراسية',ac:'#b85a08'}
 ];
 
-function diff(d){
-  const now=new Date();
-  const t=new Date(d);
-  const ms=t-now;
-  if(ms<=0) return null;
+function allEv(){return[...FE,...genSal(),...CE]}
+function diff(d){const n=new Date(),t=new Date(d.includes('T')?d:d+'T00:00:00'),df=t-n;if(df<=0)return null;return{d:Math.floor(df/864e5),h:Math.floor((df%864e5)/36e5),m:Math.floor((df%36e5)/6e4),s:Math.floor((df%6e4)/1e3),t:df}}
 
-  return{
-    d:Math.floor(ms/86400000),
-    h:Math.floor(ms%86400000/3600000),
-    m:Math.floor(ms%3600000/60000),
-    s:Math.floor(ms%60000/1000)
+function buildShareText(t,d){
+  const df=diff(d);
+  const SITE='https://kmbaqi.netlify.app';
+  let timeLeft='';
+  if(df){
+    const parts=[];
+    if(df.d>0)parts.push(`${df.d} يوم`);
+    if(df.h>0)parts.push(`${df.h} ساعة`);
+    if(df.m>0&&df.d===0)parts.push(`${df.m} دقيقة`);
+    timeLeft=parts.length?`⏳ متبقي: ${parts.join(' و ')}\n`:'';
+  }
+  return `⏳ كم باقي على ${t}؟\n\n${timeLeft}📅 ${d.split('T')[0]}\n\n🔗 اعرف الآن من موقع كم باقي؟\n${SITE}`;
+}
+
+function nativeShare(t,d){
+  const text=buildShareText(t,d);
+  if(navigator.share){
+    navigator.share({
+      title:`كم باقي على ${t}؟`,
+      text:text,
+      url:'https://kmbaqi.netlify.app'
+    }).catch(e=>{});
+  }else{
+    navigator.clipboard.writeText(text).then(()=>alert('📋 تم نسخ النص — الصقه في أي تطبيق'));
   }
 }
+
+function bCard(ev,nr){
+  const dl=DL[ev.tt];
+  const dlB=dl?dl.map((d,i)=>`<button class="ab" onclick="openM('${ev.tt}',${i})">${d.i} ${d.l}</button>`).join(''):'';
+  const cuB=ev.cu?`<span class="b-cu">⭐ خاصة</span><button class="del-cu" onclick="delCE(${ev.id})" title="حذف">✕</button>`:'';
+  const t=ev.tt.replace(/'/g,"\\'"),dd=ev.dt;
+  return `<article class="cd ${nr?'nr':''}" data-dt="${ev.dt}" data-cat="${ev.cat}" style="--ca:${ev.ac}">
+    ${nr?'<span class="b-nr">⚡ الأقرب</span>':''}
+    ${!nr&&!ev.cu?'<span class="b-live">مباشر</span>':''}${cuB}
+    <div class="cd-top"><span class="cd-ic">${ev.ic}</span><span class="cd-cat">${ev.cat}</span></div>
+    <h2 class="cd-tt">${ev.tt}</h2>
+    <p class="cd-dt">${ev.cu?ev.hj:ev.hj+' — '+ev.dt}</p>
+    <div class="ct" data-tg="${ev.dt}">
+      <div class="cu"><div class="cn" data-d>--</div><div class="cl">يوم</div></div>
+      <span class="cs">:</span>
+      <div class="cu"><div class="cn" data-h>--</div><div class="cl">ساعة</div></div>
+      <span class="cs">:</span>
+      <div class="cu"><div class="cn" data-m>--</div><div class="cl">دقيقة</div></div>
+      <span class="cs">:</span>
+      <div class="cu"><div class="cn" data-s>--</div><div class="cl">ثانية</div></div>
+    </div>
+    <div class="cd-ac">${dlB}<button class="ab share-btn" onclick="nativeShare('${t}','${dd}')">📤 مشاركة الموعد</button></div>
+  </article>`}
 
 function render(){
-  const app=document.getElementById('app');
-
-  app.innerHTML=EVENTS.map(e=>  <div class="cd" data-cat="${e.cat}">     <h2>${e.title}</h2>     <p>${e.date}</p>      <div class="ct" data-date="${e.date}">       <div class="cu"><div class="cn" data-d>--</div><div class="cl">يوم</div></div>       <div class="cu"><div class="cn" data-h>--</div><div class="cl">ساعة</div></div>       <div class="cu"><div class="cn" data-m>--</div><div class="cl">دقيقة</div></div>       <div class="cu"><div class="cn" data-s>--</div><div class="cl">ثانية</div></div>     </div>      <button class="share" onclick="shareEvent('${e.title}','${e.date}')">مشاركة</button>    </div>  ).join('');
+  const s=allEv().map(e=>({...e,df:diff(e.dt)})).filter(e=>e.df!==null).sort((a,b)=>a.df.t-b.df.t);
+  document.getElementById('g1').innerHTML=s.slice(0,6).map((e,i)=>bCard(e,i===0)).join('');
+  document.getElementById('g2').innerHTML=s.slice(6).map(e=>bCard(e,false)).join('');
 }
+function upd(){document.querySelectorAll('.ct').forEach(el=>{const d=diff(el.dataset.tg);if(!d)return;el.querySelector('[data-d]').textContent=String(d.d).padStart(2,'0');el.querySelector('[data-h]').textContent=String(d.h).padStart(2,'0');el.querySelector('[data-m]').textContent=String(d.m).padStart(2,'0');el.querySelector('[data-s]').textContent=String(d.s).padStart(2,'0')})}
 
-function update(){
-  document.querySelectorAll('.ct').forEach(el=>{
-    const d=diff(el.dataset.date);
-    if(!d) return;
+function openM(t,i){const it=DL[t][i];const lb={dua:'دعاء',g:'تهنئة'};
+document.getElementById('moB').innerHTML=`<div class="ml-ic">${it.i}</div><h2 class="ml-tt">${it.l}</h2><p class="ml-ds">${lb[it.t]||''} — ${t}</p><div class="ml-ct">${it.c}</div><div class="ml-ac"><button class="ml-b ml-b1" onclick="navigator.clipboard.writeText(document.querySelector('.ml-ct').textContent).then(()=>{this.textContent='✅ تم!'})">📋 نسخ</button><button class="ml-b ml-b2" onclick="window.open('https://wa.me/?text='+encodeURIComponent(document.querySelector('.ml-ct').textContent),'_blank')">واتساب</button></div>`;
+document.getElementById('mo').classList.add('on')}
+document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)this.classList.remove('on')});
 
-    el.querySelector('[data-d]').textContent=d.d;
-    el.querySelector('[data-h]').textContent=d.h;
-    el.querySelector('[data-m]').textContent=d.m;
-    el.querySelector('[data-s]').textContent=d.s;
-  });
-}
+document.querySelectorAll('.fb').forEach(b=>{b.addEventListener('click',()=>{
+  document.querySelectorAll('.fb').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const f=b.dataset.f;
+  document.querySelectorAll('.cd').forEach(c=>{c.classList.toggle('hid',f!=='all'&&c.dataset.cat!==f)});
+  const sh=f==='all';['ad1','ad2','dlsSec'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display=sh?'':'none'});
+})});
 
-function shareEvent(title,date){
-  const text=كم باقي على ${title}؟\n${date};
-
-  if(navigator.share){
-    navigator.share({title,text});
-  }else{
-    navigator.clipboard.writeText(text);
-    alert('تم النسخ');
+// ══════ VIEW COUNTER ══════
+async function ldViews(){
+  try{
+    const r=await fetch('https://api.counterapi.dev/v1/kambaqi/visits/up');
+    const d=await r.json();
+    if(d&&d.count){document.getElementById('viewCount').textContent=d.count.toLocaleString('ar-SA')}
+  }catch(e){
+    // Fallback: use localStorage-based per-visitor counter
+    let v=parseInt(localStorage.getItem('visit-count')||'0')+1;
+    localStorage.setItem('visit-count',v);
+    document.getElementById('viewCount').textContent=v.toLocaleString('ar-SA');
   }
 }
 
-/ FILTER */
-document.querySelectorAll('.fb').forEach(btn=>{
-  btn.onclick=()=>{
-    document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
-    btn.classList.add('on');
+// ══════ HIJRI CALENDAR ══════
+let currentCal='g';
+function switchCal(c){
+  currentCal=c;
+  document.querySelectorAll('.cal-tab').forEach(t=>t.classList.toggle('on',t.dataset.cal===c));
+  document.getElementById('calG').style.display=c==='g'?'':'none';
+  document.getElementById('calH').style.display=c==='h'?'':'none';
+  if(c==='h')updateHijriConv();
+}
 
-    const f=btn.dataset.f;
+// Convert Gregorian to Hijri string using Intl
+function gToH(date){
+  try{
+    const f=new Intl.DateTimeFormat('en-TN-u-ca-islamic-umalqura',{day:'numeric',month:'numeric',year:'numeric'});
+    const parts=f.formatToParts(date);
+    const d=parts.find(p=>p.type==='day').value;
+    const m=parts.find(p=>p.type==='month').value;
+    const y=parts.find(p=>p.type==='year').value;
+    return {d:parseInt(d),m:parseInt(m),y:parseInt(y)};
+  }catch(e){return null}
+}
 
-    document.querySelectorAll('.cd').forEach(c=>{
-      c.style.display=(f==='all'||c.dataset.cat===f)?'':'none';
-    });
-  };
-});
+// Convert Hijri to Gregorian via bisection
+function hToG(hy,hm,hd,hour,min){
+  // Approximate Gregorian date (Hijri year * 354.367 days)
+  const approxYear=Math.floor(622+hy*0.970224);
+  let gDate=new Date(approxYear,5,15);
+  let best=gDate,bestDiff=Infinity;
+  // Search within ±45 days
+  for(let offset=-60;offset<=60;offset++){
+    const testDate=new Date(gDate);
+    testDate.setDate(testDate.getDate()+offset);
+    const h=gToH(testDate);
+    if(h&&h.y===hy&&h.m===hm&&h.d===hd){
+      testDate.setHours(hour||0,min||0,0,0);
+      return testDate;
+    }
+  }
+  // Finer search across full year
+  for(let offset=-200;offset<=200;offset++){
+    const testDate=new Date(approxYear,0,1);
+    testDate.setDate(testDate.getDate()+offset);
+    const h=gToH(testDate);
+    if(h&&h.y===hy&&h.m===hm&&h.d===hd){
+      testDate.setHours(hour||0,min||0,0,0);
+      return testDate;
+    }
+  }
+  return null;
+}
 
-render();
-update();
-setInterval(update,1000);
+function updateHijriConv(){
+  const d=parseInt(document.getElementById('hijD').value);
+  const m=parseInt(document.getElementById('hijM').value);
+  const y=parseInt(document.getElementById('hijY').value);
+  const t=document.getElementById('hijT').value||'00:00';
+  const [h,mn]=t.split(':').map(Number);
+  const g=hToG(y,m,d,h,mn);
+  const el=document.getElementById('hijConv');
+  if(g){
+    const dy=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+    const mo=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+    el.textContent=`🗓️ يوافق: ${dy[g.getDay()]} ${g.getDate()} ${mo[g.getMonth()]} ${g.getFullYear()}`;
+  }else{
+    el.textContent='⚠️ تعذّر التحويل — تحقق من التاريخ';
+  }
+}
 
+function updateGregorianConv(){
+  const d=parseInt(document.getElementById('grgD').value);
+  const m=parseInt(document.getElementById('grgM').value);
+  const y=parseInt(document.getElementById('grgY').value);
+  const t=document.getElementById('grgT').value||'00:00';
+  const [h,mn]=t.split(':').map(Number);
+  const dt=new Date(y,m-1,d,h,mn);
+  const el=document.getElementById('grgConv');
+  const hMo=['','محرم','صفر','ربيع الأول','ربيع الآخر','جمادى الأولى','جمادى الآخرة','رجب','شعبان','رمضان','شوال','ذو القعدة','ذو الحجة'];
+  const dy=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+  const h_=gToH(dt);
+  if(h_){
+    el.textContent=`📿 يوافق: ${dy[dt.getDay()]} ${h_.d} ${hMo[h_.m]} ${h_.y}هـ`;
+  }else{
+    el.textContent='⚠️ تعذّر التحويل';
+  }
+}
+
+function initHijri(){
+  // Populate Hijri days 1-30
+  const dSel=document.getElementById('hijD');
+  for(let i=1;i<=30;i++){const o=document.createElement('option');o.value=i;o.textContent=i;dSel.appendChild(o)}
+  // Populate Hijri years
+  const ySel=document.getElementById('hijY');
+  const curH=gToH(new Date());
+  const curY=curH?curH.y:1447;
+  for(let i=curY;i<=curY+15;i++){const o=document.createElement('option');o.value=i;o.textContent=i+'هـ';ySel.appendChild(o)}
+  if(curH){dSel.value=curH.d;document.getElementById('hijM').value=curH.m;ySel.value=curH.y}
+  ['hijD','hijM','hijY','hijT'].forEach(id=>{
+    document.getElementById(id).addEventListener('change',updateHijriConv);
+  });
+  updateHijriConv();
+  
+  // Populate Gregorian days 1-31
+  const gdSel=document.getElementById('grgD');
+  for(let i=1;i<=31;i++){const o=document.createElement('option');o.value=i;o.textContent=i;gdSel.appendChild(o)}
+  // Populate Gregorian years
+  const gySel=document.getElementById('grgY');
+  const now=new Date();const curGY=now.getFullYear();
+  for(let i=curGY;i<=curGY+15;i++){const o=document.createElement('option');o.value=i;o.textContent=i;gySel.appendChild(o)}
+  gdSel.value=now.getDate();
+  document.getElementById('grgM').value=now.getMonth()+1;
+  gySel.value=curGY;
+  ['grgD','grgM','grgY','grgT'].forEach(id=>{
+    document.getElementById(id).addEventListener('change',updateGregorianConv);
+  });
+  updateGregorianConv();
+}
+
+function init(){ldCE();render();upd();setInterval(upd,1000);ldViews();initHijri()}
+init();
 </script>
 
 </body>
