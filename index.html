@@ -114,10 +114,10 @@ button.ae-btn:hover,.ae-btn:hover{border-color:#a78bfa;background:rgba(167,139,2
 .grd{display:grid;grid-template-columns:1fr;gap:14px;padding:0 14px 24px}
 
 /* ══════ CARDS ══════ */
-.cd{background:var(–card);border:none;border-radius:var(–r);padding:24px 24px 20px;position:relative;overflow:hidden;transition:all 0.35s;cursor:default;animation:cIn 0.5s ease backwards;box-shadow:0 1px 3px rgba(0,0,0,0.2)}
+.cd{background:var(–card);border:1px solid rgba(167,139,250,0.25);border-radius:var(–r);padding:24px 24px 20px;position:relative;overflow:hidden;transition:all 0.35s;cursor:default;animation:cIn 0.5s ease backwards;box-shadow:0 1px 3px rgba(0,0,0,0.2)}
 .cd:nth-child(1){animation-delay:.04s}.cd:nth-child(2){animation-delay:.08s}.cd:nth-child(3){animation-delay:.12s}.cd:nth-child(4){animation-delay:.16s}.cd:nth-child(5){animation-delay:.2s}.cd:nth-child(6){animation-delay:.24s}
 @keyframes cIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.cd:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.25)}
+.cd:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(167,139,250,0.15);border-color:rgba(167,139,250,0.4)}
 .cd::before{display:none}
 
 /* Card header: icon + category inline */
